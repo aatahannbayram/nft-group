@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "projects": "Projeler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "getQuote": "Teklif Al"
+  },
+  "footer": {
+    "tagline": "Gemi İnşa ve Mühendislik",
+    "address": "Hürriyet Mahallesi, No:44/3B, Altınova/Yalova",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "home": {
+    "heroEyebrow": "NFT GROUP — GEMİ İNŞA VE MÜHENDİSLİK",
+    "heroTitle": "Denizden karaya, mühendislikte güvenilir çözüm ortağınız",
+    "heroSubtitle": "Tersane gemi inşa ve tamirinden çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar yüksek standartlarda mühendislik hizmetleri.",
+    "ctaPrimary": "Projenizi Anlatın",
+    "ctaSecondary": "Hizmetlerimizi İnceleyin"
+  },
+  "services": {
+    "sectionTitle": "Çalıştığımız Alanlar",
+    "tersaneGemiInsa": {
+      "title": "Tersane Gemi İnşa",
+      "description": "Askeri ve sivil projelerde ön imalat, blok eki, çelik, teçhiz, boru donatım ve izalasyon işlerinde yetkinlik."
+    },
+    "tersaneTamir": {
+      "title": "Tersane Tamir",
+      "description": "Gemi geneli saç, teçhiz, krom, bakır, alüminyum, çelik onarım ve değişim; gemi bozma ve geri dönüşüm operasyonları."
+    },
+    "altyapiVeCelikInsa": {
+      "title": "Altyapı ve Çelik İnşa",
+      "description": "Altyapı, çelik bina yapımları, atölye inşası, çelik konstrüksiyon, çatı, platform ve demir doğrama işleri."
+    },
+    "insaatSektoru": {
+      "title": "İnşaat Sektörü",
+      "description": "Betonarme ev ve bina inşaları, dış cephe yalıtımı, havuz yapımı, mimari destek ve 3 boyutlu sunum hizmetleri."
+    }
+  },
+  "about": {
+    "missionTitle": "Misyonumuz",
+    "mission": "Tersane, inşaat ve endüstriyel hizmet alanlarında; güvenilir, kaliteli ve sürdürülebilir çözümler sunarak projeleri yüksek standartlarda tamamlamak temel misyonumuzdur.",
+    "visionTitle": "Vizyonumuz",
+    "vision": "Tersane ve inşaat ve endüstriyel hizmet alanlarında yenilikçi yaklaşımı, güçlü saha organizasyonu ve kaliteli iş anlayışıyla örnek gösterilen bir marka olmak."
+  },
+  "contact": {
+    "sectionTitle": "İletişime Geçin",
+    "sectionSubtitle": "Projenizin detaylarını paylaşın, size en kısa sürede dönüş yapalım.",
+    "form": {
+      "name": "Ad Soyad",
+      "company": "Firma (opsiyonel)",
+      "phone": "Telefon",
+      "email": "E-posta",
+      "projectType": "Proje Türü",
+      "budgetRange": "Tahmini Bütçe (opsiyonel)",
+      "message": "Proje Detayları",
+      "submit": "Talebi Gönder",
+      "submitting": "Gönderiliyor...",
+      "success": "Talebiniz alındı, en kısa sürede dönüş yapacağız.",
+      "error": "Bir şeyler ters gitti, lütfen tekrar deneyin."
+    }
+  }
+}

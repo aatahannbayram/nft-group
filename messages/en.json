@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "footer": {
+    "tagline": "Shipbuilding and Engineering",
+    "address": "Hürriyet Mahallesi, No:44/3B, Altınova/Yalova, Türkiye",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "heroEyebrow": "NFT GROUP — SHIPBUILDING & ENGINEERING",
+    "heroTitle": "From sea to shore, your trusted engineering partner",
+    "heroSubtitle": "High-standard engineering services spanning shipyard new-build and repair, steel construction, infrastructure, and civil construction.",
+    "ctaPrimary": "Tell Us About Your Project",
+    "ctaSecondary": "Explore Our Services"
+  },
+  "services": {
+    "sectionTitle": "Where We Work",
+    "tersaneGemiInsa": {
+      "title": "Shipyard New-Build",
+      "description": "Expertise in pre-fabrication, block joining, steel, outfitting, piping, and insulation for military and civil vessel projects."
+    },
+    "tersaneTamir": {
+      "title": "Shipyard Repair",
+      "description": "Hull steel, outfitting, chrome, copper, aluminum, and steel repair and replacement; ship recycling and dismantling operations."
+    },
+    "altyapiVeCelikInsa": {
+      "title": "Infrastructure & Steel Construction",
+      "description": "Infrastructure, steel building construction, workshop construction, steel structures, roofing, platforms, and ironwork."
+    },
+    "insaatSektoru": {
+      "title": "Construction",
+      "description": "Reinforced concrete buildings, facade insulation, pool construction, architectural support, and 3D presentation services."
+    }
+  },
+  "about": {
+    "missionTitle": "Our Mission",
+    "mission": "Our core mission is to complete projects to the highest standards by delivering reliable, high-quality, and sustainable solutions across shipyard, construction, and industrial services.",
+    "visionTitle": "Our Vision",
+    "vision": "To become a benchmark brand in shipyard, construction, and industrial services through an innovative approach, strong field organization, and a quality-first mindset."
+  },
+  "contact": {
+    "sectionTitle": "Get in Touch",
+    "sectionSubtitle": "Share your project details and we'll get back to you shortly.",
+    "form": {
+      "name": "Full Name",
+      "company": "Company (optional)",
+      "phone": "Phone",
+      "email": "Email",
+      "projectType": "Project Type",
+      "budgetRange": "Estimated Budget (optional)",
+      "message": "Project Details",
+      "submit": "Send Request",
+      "submitting": "Sending...",
+      "success": "Your request has been received, we'll get back to you shortly.",
+      "error": "Something went wrong, please try again."
+    }
+  }
+}
