@@ -21,7 +21,7 @@ export const services = [
   {
     slug: "altyapi-ve-celik-insa",
     messageKey: "altyapiVeCelikInsa",
-    image: "/images/real/steel-structure.jpg",
+    image: "/images/gallery/altyapi-ve-celik-insa/08.jpg",
     fxImage: "/images/services-fx/crane-v4.png",
   },
   {
