@@ -1,28 +1,52 @@
-import { Anchor, Layers, Mail, MapPin, Phone, Shield, Target, Telescope } from "lucide-react";
+import { Mail, MapPin, Phone, Shield, Target, Waves } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { aboutCapabilities } from "@/lib/constants";
 import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { getSiteSettings } from "@/lib/settings";
 
-const CAPABILITY_ICONS = {
-  military: Shield,
-  floatingDock: Anchor,
-  disciplines: Layers,
-  location: MapPin,
-} as const;
-
 const SECOND_PHONE = "+90 505 936 14 21";
+
+const PRINCIPLE_ICONS = [Shield, Waves, Target] as const;
+
+const TEAM_PHOTOS = [
+  "/images/workforce/engineer-confident.jpg",
+  "/images/workforce/pipe-welder-workshop.jpg",
+  "/images/workforce/steel-beam-welder.jpg",
+];
+
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex w-fit items-center rounded-full bg-navy/5 px-3.5 py-1.5 text-xs font-medium text-navy/70">
+      {children}
+    </span>
+  );
+}
 
 export default async function AboutPage() {
   const t = await getTranslations("about");
   const { contact_phone, contact_email, contact_address } =
     await getSiteSettings();
 
+  const principles = [0, 1, 2].map((i) => ({
+    icon: PRINCIPLE_ICONS[i],
+    title: t(`principles.${i}.title`),
+    description: t(`principles.${i}.description`),
+  }));
+
   return (
     <>
-      <section className="relative border-b border-border">
-        <div className="photo-tone relative h-[46vh] min-h-[20rem] w-full">
+      {/* Hero — dark rounded card, inset with a blurred bleed of the same photo behind it */}
+      <section className="relative bg-navy px-3 pt-3 sm:px-5 sm:pt-5">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/real/drydock-wide.jpg"
+            alt=""
+            fill
+            className="scale-110 object-cover opacity-30 blur-2xl"
+          />
+        </div>
+
+        <div className="photo-tone shadow-glow-navy relative mx-auto h-[64vh] min-h-[24rem] max-w-7xl overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]">
           <Image
             src="/images/real/drydock-wide.jpg"
             alt=""
@@ -31,115 +55,94 @@ export default async function AboutPage() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25" />
+          <div className="absolute inset-0 bg-navy/65" />
+          <ScrollReveal className="relative flex h-full flex-col items-center justify-center px-6 text-center">
+            <p className="font-stencil text-xs font-semibold tracking-[0.25em] text-gold uppercase">
+              {t("pageEyebrow")}
+            </p>
+            <h1 className="mt-4 max-w-2xl text-balance font-display text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+              {t("pageTitle")}
+            </h1>
+            <p className="mt-5 max-w-lg text-balance text-white/70">
+              {t("pageIntro")}
+            </p>
+          </ScrollReveal>
         </div>
-        <ScrollReveal className="relative mx-auto -mt-20 max-w-6xl px-6 pb-14">
-          <p className="font-stencil text-sm font-semibold tracking-[0.25em] text-gold uppercase">
-            {t("pageEyebrow")}
-          </p>
-          <h1 className="mt-4 max-w-2xl text-balance font-display text-4xl font-bold tracking-tight md:text-5xl">
-            {t("pageTitle")}
-          </h1>
-          <p className="mt-5 max-w-xl text-muted-foreground">
-            {t("pageIntro")}
-          </p>
-        </ScrollReveal>
       </section>
 
-      <section className="photo-tone relative h-[38vh] min-h-[16rem] w-full overflow-hidden">
-        <Image
-          src="/images/real/hero-launch.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-navy/55" />
-        <div className="relative flex h-full items-end">
-          <ScrollReveal className="mx-auto w-full max-w-6xl px-6 pb-10">
-            <p className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold uppercase">
-              {t("workforceEyebrow")}
-            </p>
-            <p className="mt-3 max-w-lg text-balance font-display text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl">
+      {/* Principles */}
+      <section className="relative bg-surface-2">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <ScrollReveal>
+            <Pill>{t("principlesEyebrow")}</Pill>
+            <h2 className="mt-6 max-w-3xl text-balance font-display text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl">
+              <span className="text-foreground/40">{t("principlesLeadIn")} </span>
+              {t("principlesHeadline")}
+            </h2>
+          </ScrollReveal>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {principles.map(({ icon: Icon, title, description }, index) => (
+              <ScrollReveal
+                key={title}
+                delay={0.08 * index}
+                className="rounded-3xl bg-white p-7 shadow-sm"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-white">
+                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <h3 className="mt-6 font-display text-lg font-bold tracking-tight text-foreground">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Field team */}
+      <section className="relative bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <ScrollReveal>
+            <Pill>{t("workforceEyebrowPill")}</Pill>
+            <h2 className="mt-6 max-w-xl text-balance font-display text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl">
               {t("workforceMessage")}
-            </p>
+            </h2>
           </ScrollReveal>
+
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {TEAM_PHOTOS.map((src, index) => (
+              <ScrollReveal
+                key={src}
+                delay={0.08 * index}
+                className="photo-tone relative aspect-[3/4] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="(min-width: 640px) 33vw, 50vw"
+                  className="object-cover"
+                />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-b border-border bg-surface-2">
-        <div
-          aria-hidden
-          className="bg-glow-gold pointer-events-none absolute -top-24 right-[4%] -z-0 h-80 w-80 opacity-15"
-        />
-        <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 py-20 lg:grid-cols-5">
-          <ScrollReveal className="glass flex flex-col gap-8 rounded-3xl p-8 sm:p-10 lg:col-span-3">
-            <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
-                <Target className="h-5 w-5" strokeWidth={2} />
-              </span>
-              <div>
-                <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold uppercase">
-                  {t("missionTitle")}
-                </span>
-                <p className="mt-2 font-display text-xl leading-relaxed tracking-tight text-foreground/90 sm:text-2xl">
-                  {t("mission")}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 border-t border-border pt-8">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy/10 text-navy">
-                <Telescope className="h-5 w-5" strokeWidth={2} />
-              </span>
-              <div>
-                <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-steel uppercase">
-                  {t("visionTitle")}
-                </span>
-                <p className="mt-2 font-display text-xl leading-relaxed tracking-tight text-foreground/90 sm:text-2xl">
-                  {t("vision")}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal
-            delay={0.15}
-            className="flex flex-col gap-3 content-start lg:col-span-2"
-          >
-            {aboutCapabilities.map(({ key }, index) => {
-              const Icon = CAPABILITY_ICONS[key as keyof typeof CAPABILITY_ICONS];
-              return (
-                <div
-                  key={key}
-                  className="glass flex items-center gap-4 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
-                    <Icon className="h-4 w-4" strokeWidth={2} />
-                  </span>
-                  <p className="text-[15px] font-medium leading-snug text-foreground/85">
-                    {t(`capabilities.${key}`)}
-                  </p>
-                  <span className="ml-auto font-stencil text-xs font-semibold text-muted-foreground/40">
-                    0{index + 1}
-                  </span>
-                </div>
-              );
-            })}
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="relative">
+      {/* Contact */}
+      <section className="relative border-t border-border bg-surface-2">
         <ScrollReveal className="mx-auto max-w-6xl px-6 py-20">
-          <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold uppercase">
-            {t("contactTitle")}
-          </span>
+          <Pill>{t("contactTitle")}</Pill>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <a
               href={`mailto:${contact_email}`}
-              className="glass group flex flex-col gap-3 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              className="group flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-white transition-colors group-hover:bg-gold">
                 <Mail className="h-4 w-4" strokeWidth={2} />
               </span>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -152,9 +155,9 @@ export default async function AboutPage() {
 
             <a
               href={`tel:${contact_phone.replace(/\s/g, "")}`}
-              className="glass group flex flex-col gap-3 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              className="group flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-white transition-colors group-hover:bg-gold">
                 <Phone className="h-4 w-4" strokeWidth={2} />
               </span>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -172,9 +175,9 @@ export default async function AboutPage() {
               href={`https://www.google.com/maps?q=${encodeURIComponent(contact_address)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass group flex flex-col gap-3 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              className="group flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-white transition-colors group-hover:bg-gold">
                 <MapPin className="h-4 w-4" strokeWidth={2} />
               </span>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">

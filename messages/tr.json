@@ -73,10 +73,7 @@
     "sideLabel": "Hakkımızda",
     "teaserKicker": "Sözde değil,",
     "teaserTitle": "Tersane ve inşaat sektöründe güvenilir bir mühendislik ekibi;",
-    "missionTitle": "Misyonumuz",
     "mission": "Tersane, inşaat ve endüstriyel hizmet alanlarında; güvenilir, kaliteli ve sürdürülebilir çözümler sunarak projeleri yüksek standartlarda tamamlamak temel misyonumuzdur.",
-    "visionTitle": "Vizyonumuz",
-    "vision": "Tersane ve inşaat ve endüstriyel hizmet alanlarında yenilikçi yaklaşımı, güçlü saha organizasyonu ve kaliteli iş anlayışıyla örnek gösterilen bir marka olmak.",
     "capabilities": {
       "military": "Askeri & Sivil Projeler",
       "floatingDock": "Yüzer Havuz Kapasitesi",
@@ -86,11 +83,28 @@
     "pageEyebrow": "HAKKIMIZDA",
     "pageTitle": "Genç, dinamik ve çözüm odaklı bir mühendislik ekibi",
     "pageIntro": "İş disiplinini, mühendislik bakış açısını ve saha tecrübemizi bir araya getirerek müşterilerimize zamanında ve güven veren hizmet sağlamayı hedefliyoruz.",
+    "principlesEyebrow": "İlkelerimiz",
+    "principlesLeadIn": "NFT Group basit bir fikir üzerine kurulu:",
+    "principlesHeadline": "mühendislik güvenilir olmalı, karmaşık olmamalı. Sahada olan her şeye aynı standardı uyguluyoruz.",
+    "principles": [
+      {
+        "title": "Güvenilirlik",
+        "description": "Şeffaf iletişimle, projenizin her aşamasında ne olduğunu her zaman bilirsiniz."
+      },
+      {
+        "title": "Uyum Kabiliyeti",
+        "description": "Saha koşulları değişir; ekibimiz ve planımız projenize göre şekillenir, işinizi aksatmaz."
+      },
+      {
+        "title": "Odak",
+        "description": "Mühendislikten sahaya kadar her adım birlikte çalışır; projeniz sürtünmesiz ilerler."
+      }
+    ],
     "contactTitle": "İletişim Bilgilerimiz",
     "email": "E-posta",
     "phone": "Telefon",
     "address": "Adres",
-    "workforceEyebrow": "SAHADAKİ EKİBİMİZ",
+    "workforceEyebrowPill": "Sahadaki Ekibimiz",
     "workforceMessage": "Her projede baret takan, emniyet kemerini bağlayan, işini ustalıkla yapan bir ekip duruyor."
   },
   "projects": {

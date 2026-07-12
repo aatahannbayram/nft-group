@@ -73,10 +73,7 @@
     "sideLabel": "About Us",
     "teaserKicker": "Not just talk,",
     "teaserTitle": "A trusted engineering team in shipyard and construction;",
-    "missionTitle": "Our Mission",
     "mission": "Our core mission is to complete projects to the highest standards by delivering reliable, high-quality, and sustainable solutions across shipyard, construction, and industrial services.",
-    "visionTitle": "Our Vision",
-    "vision": "To become a benchmark brand in shipyard, construction, and industrial services through an innovative approach, strong field organization, and a quality-first mindset.",
     "capabilities": {
       "military": "Military & Civil Projects",
       "floatingDock": "Floating Dock Capacity",
@@ -86,11 +83,28 @@
     "pageEyebrow": "ABOUT US",
     "pageTitle": "A young, dynamic, and solution-driven engineering team",
     "pageIntro": "We bring together work discipline, an engineering perspective, and field experience to deliver timely, dependable service to our clients.",
+    "principlesEyebrow": "Principles",
+    "principlesLeadIn": "NFT Group is built on a simple idea:",
+    "principlesHeadline": "engineering should be reliable, not complicated. We hold everything on site to the same standard.",
+    "principles": [
+      {
+        "title": "Reliability",
+        "description": "Transparent communication means you always know what's happening, at every stage of your project."
+      },
+      {
+        "title": "Adaptability",
+        "description": "Site conditions change; our team and plan flex to your project instead of working against it."
+      },
+      {
+        "title": "Focus",
+        "description": "Every step, from engineering to the field, works together — so your project moves without friction."
+      }
+    ],
     "contactTitle": "Contact Details",
     "email": "Email",
     "phone": "Phone",
     "address": "Address",
-    "workforceEyebrow": "OUR PEOPLE ON SITE",
+    "workforceEyebrowPill": "Our Field Team",
     "workforceMessage": "Behind every project stands a team that puts on the hard hat, clips in the harness, and does the work with real craftsmanship."
   },
   "projects": {
