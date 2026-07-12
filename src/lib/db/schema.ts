@@ -71,8 +71,31 @@ export const siteSettings = pgTable("site_settings", {
     .defaultNow(),
 });
 
+export const newsArticles = pgTable("news_articles", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  image: text("image").notNull(),
+  category: projectTypeEnum("category").notNull(),
+  publishedAt: timestamp("published_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  featured: boolean("featured").notNull().default(false),
+  published: boolean("published").notNull().default(true),
+  titleTr: text("title_tr").notNull(),
+  titleEn: text("title_en").notNull(),
+  excerptTr: text("excerpt_tr").notNull(),
+  excerptEn: text("excerpt_en").notNull(),
+  bodyTr: text("body_tr").array().notNull(),
+  bodyEn: text("body_en").array().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export type ProjectInquiry = typeof projectInquiries.$inferSelect;
 export type NewProjectInquiry = typeof projectInquiries.$inferInsert;
 export type GalleryItem = typeof galleryItems.$inferSelect;
 export type NewGalleryItem = typeof galleryItems.$inferInsert;
 export type SiteSetting = typeof siteSettings.$inferSelect;
+export type NewsArticleRow = typeof newsArticles.$inferSelect;
+export type NewNewsArticleRow = typeof newsArticles.$inferInsert;

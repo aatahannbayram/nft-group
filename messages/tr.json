@@ -3,6 +3,7 @@
     "home": "Ana Sayfa",
     "services": "Hizmetler",
     "projects": "Projeler",
+    "news": "Haberler",
     "about": "Hakkımızda",
     "contact": "İletişim",
     "getQuote": "Teklif Al"
@@ -10,44 +11,158 @@
   "footer": {
     "tagline": "Gemi İnşa ve Mühendislik",
     "address": "Hürriyet Mahallesi, No:44/3B, Altınova/Yalova",
-    "rights": "Tüm hakları saklıdır."
+    "rights": "Tüm hakları saklıdır.",
+    "mapCta": "Haritada Gör"
   },
   "home": {
     "heroEyebrow": "NFT GROUP — GEMİ İNŞA VE MÜHENDİSLİK",
     "heroTitle": "Denizden karaya, mühendislikte güvenilir çözüm ortağınız",
+    "heroTitleLine1": "Denizden karaya,",
+    "heroTitleLine2": "mühendislikte güvenilir çözüm ortağınız",
     "heroSubtitle": "Tersane gemi inşa ve tamirinden çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar yüksek standartlarda mühendislik hizmetleri.",
     "ctaPrimary": "Projenizi Anlatın",
-    "ctaSecondary": "Hizmetlerimizi İnceleyin"
+    "ctaSecondary": "Hizmetlerimizi İnceleyin",
+    "heroCallUs": "Bizi Arayın",
+    "servicesLeadIn": "Denizden karaya,",
+    "servicesHeadline": "tersane inşasından çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar uçtan uca mühendislik.",
+    "cornerDisciplines": "4 Uzmanlık Alanı",
+    "statementTitle1": "Güvenilir ve sorunsuz mühendislik deneyimi",
+    "statementTitle2": "Sahadan limana kesintisiz süreç",
+    "statementCaption": "Ekibimiz her aşamada sahada; projelerinizi zamanında, şeffaf iletişimle ve yüksek standartlarda tamamlıyoruz.",
+    "statDisciplines": "Uzmanlık Alanı",
+    "statFieldWork": "Saha Fotoğrafı",
+    "statProjectTypes": "Askeri & Sivil Proje Tipi",
+    "statLocation": "Altınova / Yalova Sahası",
+    "fieldKicker": "Sahadan, filtresiz,",
+    "fieldTitle": "Vaat etmiyoruz, gösteriyoruz",
+    "fieldIntro": "Tersane ve inşaat sahalarımızdan derlenen gerçek kareler; ekibimizin nasıl çalıştığını birebir izleyin. Galeri düzenli olarak güncelleniyor.",
+    "fieldBadge": "Saha Fotoğrafı"
   },
   "services": {
+    "sectionKicker": "Sahada kanıtlanan,",
     "sectionTitle": "Çalıştığımız Alanlar",
+    "viewAll": "Tüm Hizmetler",
+    "pageEyebrow": "HİZMETLERİMİZ",
+    "pageTitle": "Denizde ve karada uçtan uca mühendislik",
+    "pageIntro": "Tersane gemi inşa ve tamirinden çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar dört ana alanda saha tecrübesi ve mühendislik disipliniyle hizmet veriyoruz.",
+    "detailCta": "Bu alanda projeniz mi var? Bize anlatın.",
+    "viewDetails": "Detayları Gör",
     "tersaneGemiInsa": {
       "title": "Tersane Gemi İnşa",
-      "description": "Askeri ve sivil projelerde ön imalat, blok eki, çelik, teçhiz, boru donatım ve izalasyon işlerinde yetkinlik."
+      "description": "Askeri ve sivil projelerde ön imalat, blok eki, çelik, teçhiz, boru donatım ve izalasyon işlerinde yetkinlik.",
+      "detail": "NFT Group olarak yeni inşa alanında askeri ve sivil projelerde görev aldık. Firmamız ön imalat, blok eki, çelik, teçhiz, boru donatım ve izalasyon işlerinde yetkinliğe sahiptir. Yeni inşa alanında tumba operasyonlarında, gemi iniş operasyonlarında, papet imalatında ve gemi tav ısıl düzeltme işlemlerinde aktif görevler üstlenmişizdir.",
+      "items": ["Ön imalat", "Blok eki", "Çelik işleri", "Teçhiz", "Boru donatım", "İzolasyon", "Tumba operasyonları", "Gemi iniş operasyonları", "Papet imalatı", "Gemi tav ısıl düzeltme"]
     },
     "tersaneTamir": {
       "title": "Tersane Tamir",
-      "description": "Gemi geneli saç, teçhiz, krom, bakır, alüminyum, çelik onarım ve değişim; gemi bozma ve geri dönüşüm operasyonları."
+      "description": "Gemi geneli saç, teçhiz, krom, bakır, alüminyum, çelik onarım ve değişim; gemi bozma ve geri dönüşüm operasyonları.",
+      "detail": "Tamir alanında gemi geneli saç ve teçhiz tamir işlemlerini, gemi geneli krom, bakır, pvc, alüminyum, çelik malzeme onarım ve değişimlerini, boru donatım işlerini yürütmekteyiz. Ayrıca gemi bozma işleri, geri dönüşüm proje operasyonları, yüzer havuz tamir, bakım, onarım ve revizyon kapasitesine sahibiz.",
+      "items": ["Saç tamir işlemleri", "Teçhiz tamir işlemleri", "Krom, bakır, PVC, alüminyum, çelik onarım", "Boru donatım işleri", "Gemi bozma işleri", "Geri dönüşüm operasyonları", "Yüzer havuz bakım-onarım"]
     },
     "altyapiVeCelikInsa": {
       "title": "Altyapı ve Çelik İnşa",
-      "description": "Altyapı, çelik bina yapımları, atölye inşası, çelik konstrüksiyon, çatı, platform ve demir doğrama işleri."
+      "description": "Altyapı, çelik bina yapımları, atölye inşası, çelik konstrüksiyon, çatı, platform ve demir doğrama işleri.",
+      "detail": "Altyapı, çelik bina yapımları, altyapısal boru işleri (doğalgaz, tesisat vb.), atölye inşası (panel kaplama, vinç ray kurulumu dahil) konusunda tecrübeye sahibiz. Çelik konstrüksiyon, çatı, platform gibi kapalı mahaller, çardak ve dinlenme alanları, fuar alanları, sundurma gibi proje geçmişimiz mevcuttur. Ayrıca demir doğrama, bükme, ferforje ve çevresel hafif çelik işlerini de bünyemizde yapmaktayız.",
+      "items": ["Altyapı işleri", "Çelik bina yapımları", "Altyapısal boru işleri", "Atölye inşası", "Çelik konstrüksiyon", "Çardak ve dinlenme alanları", "Fuar alanları ve sundurma", "Demir doğrama, bükme, ferforje"]
     },
     "insaatSektoru": {
       "title": "İnşaat Sektörü",
-      "description": "Betonarme ev ve bina inşaları, dış cephe yalıtımı, havuz yapımı, mimari destek ve 3 boyutlu sunum hizmetleri."
+      "description": "Betonarme ev ve bina inşaları, dış cephe yalıtımı, havuz yapımı, mimari destek ve 3 boyutlu sunum hizmetleri.",
+      "detail": "İnşaat sektöründe betonarme ev ve bina inşaları, dış cephe yalıtım çözümleri, seramik işçilikleri, peyzaj düzenleme işçilikleri, havuz yapımı, ahşap çardak ve çatı işleri, yenileme projeleri, mimari destek, 3 boyutlu sunum ve süreç danışmanlıkları hizmetlerini vermekteyiz.",
+      "items": ["Betonarme ev ve bina inşaları", "Dış cephe yalıtımı", "Seramik işçilikleri", "Peyzaj düzenleme", "Havuz yapımı", "Ahşap çardak ve çatı işleri", "Yenileme projeleri", "Mimari destek ve 3D sunum"]
     }
   },
   "about": {
+    "sideLabel": "Hakkımızda",
+    "teaserKicker": "Sözde değil,",
+    "teaserTitle": "Tersane ve inşaat sektöründe güvenilir bir mühendislik ekibi;",
     "missionTitle": "Misyonumuz",
     "mission": "Tersane, inşaat ve endüstriyel hizmet alanlarında; güvenilir, kaliteli ve sürdürülebilir çözümler sunarak projeleri yüksek standartlarda tamamlamak temel misyonumuzdur.",
     "visionTitle": "Vizyonumuz",
-    "vision": "Tersane ve inşaat ve endüstriyel hizmet alanlarında yenilikçi yaklaşımı, güçlü saha organizasyonu ve kaliteli iş anlayışıyla örnek gösterilen bir marka olmak."
+    "vision": "Tersane ve inşaat ve endüstriyel hizmet alanlarında yenilikçi yaklaşımı, güçlü saha organizasyonu ve kaliteli iş anlayışıyla örnek gösterilen bir marka olmak.",
+    "capabilities": {
+      "military": "Askeri & Sivil Projeler",
+      "floatingDock": "Yüzer Havuz Kapasitesi",
+      "disciplines": "4 Ana Uzmanlık Alanı",
+      "location": "Altınova / Yalova Sahası"
+    },
+    "pageEyebrow": "HAKKIMIZDA",
+    "pageTitle": "Genç, dinamik ve çözüm odaklı bir mühendislik ekibi",
+    "pageIntro": "İş disiplinini, mühendislik bakış açısını ve saha tecrübemizi bir araya getirerek müşterilerimize zamanında ve güven veren hizmet sağlamayı hedefliyoruz.",
+    "contactTitle": "İletişim Bilgilerimiz",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "address": "Adres",
+    "workforceEyebrow": "SAHADAKİ EKİBİMİZ",
+    "workforceMessage": "Her projede baret takan, emniyet kemerini bağlayan, işini ustalıkla yapan bir ekip duruyor."
+  },
+  "projects": {
+    "pageEyebrow": "PROJELERİMİZ",
+    "pageTitle": "Sahadan kareler",
+    "pageIntro": "Tersane ve inşaat sahalarımızdan bir seçki. Galerimiz düzenli olarak güncelleniyor.",
+    "emptyState": "Galeri yakında burada olacak.",
+    "filterAll": "Tümü",
+    "browse": "Galeriye Git"
+  },
+  "featured": {
+    "eyebrow": "SAHADAN",
+    "title": "Uluslararası bir feribot teslim projesinde sahadaydık",
+    "description": "Ekibimiz, yolcu ve araç taşımacılığı için inşa edilen bir feribotun yeni inşa sürecinde blok birleştirme, çelik ve teçhiz işlerinde görev aldı. Gemi, törenle suya indirilerek uluslararası bir operatöre teslim edildi."
+  },
+  "news": {
+    "kicker": "Sahadan ve sektörden,",
+    "sectionTitle": "Haberler",
+    "viewAll": "Tümünü Gör",
+    "pageEyebrow": "HABERLER",
+    "pageTitle": "Sektörden haberler ve saha notları",
+    "pageIntro": "Gemi inşa, tamir, çelik konstrüksiyon ve inşaat alanlarından güncel bilgiler ve saha tecrübelerimiz.",
+    "readMore": "Devamını Oku",
+    "backToNews": "Tüm Haberler",
+    "relatedTitle": "İlgili Haberler"
+  },
+  "faq": {
+    "eyebrow": "SIKÇA SORULAN SORULAR",
+    "title": "Merak edilenler",
+    "intro": "Projelerimiz ve çalışma şeklimiz hakkında en çok gelen soruları derledik. Aradığınızı bulamazsanız bize doğrudan ulaşabilirsiniz.",
+    "imageCaption": "Sahadan, gerçek bir blok kaldırma operasyonu.",
+    "items": {
+      "scope": {
+        "question": "Hangi tür projelerde hizmet veriyorsunuz?",
+        "answer": "Tersane gemi inşa ve tamirinden çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar dört ana alanda hem askeri hem sivil projelerde uçtan uca mühendislik hizmeti sunuyoruz."
+      },
+      "locations": {
+        "question": "Sadece Yalova'da mı faaliyet gösteriyorsunuz?",
+        "answer": "Merkez sahamız Altınova/Yalova'da yer alıyor, ancak ekiplerimiz Türkiye genelinde tersane ve inşaat projelerinde saha operasyonu yürütebiliyor."
+      },
+      "timeline": {
+        "question": "Bir proje ne kadar sürede tamamlanır?",
+        "answer": "Süre; projenin kapsamına, ölçeğine ve saha koşullarına göre değişir. Talebinizi aldıktan sonra ekibimiz saha keşfi ve mühendislik değerlendirmesiyle size net bir zaman çizelgesi sunar."
+      },
+      "quote": {
+        "question": "Nasıl teklif alabilirim?",
+        "answer": "İletişim formundan proje türünü ve detaylarını paylaşmanız yeterli. Ekibimiz 1 iş günü içinde dönüş yaparak sonraki adımları sizinle planlar."
+      },
+      "military": {
+        "question": "Askeri ve sivil proje deneyiminiz var mı?",
+        "answer": "Evet. Yeni inşa ve tamir alanlarında hem askeri hem sivil projelerde görev aldık; blok eki, çelik, teçhiz, boru donatım ve izolasyon işlerinde yetkinliğe sahibiz."
+      }
+    }
   },
   "contact": {
+    "pageEyebrow": "İLETİŞİM",
+    "sectionKicker": "Konuşmaya hazırız,",
+    "bannerKicker": "Projeniz mi var?",
     "sectionTitle": "İletişime Geçin",
     "sectionSubtitle": "Projenizin detaylarını paylaşın, size en kısa sürede dönüş yapalım.",
+    "projectTypes": {
+      "tersane_gemi_insa": "Tersane Gemi İnşa",
+      "tersane_tamir": "Tersane Tamir",
+      "altyapi_ve_celik_insa": "Altyapı ve Çelik İnşa",
+      "insaat_sektoru": "İnşaat Sektörü"
+    },
     "form": {
+      "title": "Proje Talep Formu",
+      "subtitle": "Aşağıdaki bilgileri doldurun, ekibimiz 1 iş günü içinde size dönüş yapsın.",
       "name": "Ad Soyad",
       "company": "Firma (opsiyonel)",
       "phone": "Telefon",

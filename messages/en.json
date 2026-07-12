@@ -3,6 +3,7 @@
     "home": "Home",
     "services": "Services",
     "projects": "Projects",
+    "news": "News",
     "about": "About",
     "contact": "Contact",
     "getQuote": "Get a Quote"
@@ -10,44 +11,158 @@
   "footer": {
     "tagline": "Shipbuilding and Engineering",
     "address": "Hürriyet Mahallesi, No:44/3B, Altınova/Yalova, Türkiye",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "mapCta": "View on Map"
   },
   "home": {
     "heroEyebrow": "NFT GROUP — SHIPBUILDING & ENGINEERING",
     "heroTitle": "From sea to shore, your trusted engineering partner",
+    "heroTitleLine1": "From sea to shore,",
+    "heroTitleLine2": "your trusted engineering partner",
     "heroSubtitle": "High-standard engineering services spanning shipyard new-build and repair, steel construction, infrastructure, and civil construction.",
     "ctaPrimary": "Tell Us About Your Project",
-    "ctaSecondary": "Explore Our Services"
+    "ctaSecondary": "Explore Our Services",
+    "heroCallUs": "Call Us",
+    "servicesLeadIn": "From sea to shore,",
+    "servicesHeadline": "shipyard new-build to steel construction, infrastructure to civil works — full-spectrum engineering.",
+    "cornerDisciplines": "4 Core Disciplines",
+    "statementTitle1": "Reliable, seamless engineering experience",
+    "statementTitle2": "From field to port, without interruption",
+    "statementCaption": "Our team is on-site at every stage — delivering your projects on time, with transparent communication and the highest standards.",
+    "statDisciplines": "Core Disciplines",
+    "statFieldWork": "Field Photos",
+    "statProjectTypes": "Military & Civil Project Types",
+    "statLocation": "Altınova / Yalova Yard",
+    "fieldKicker": "Straight from the field,",
+    "fieldTitle": "We don't promise — we show",
+    "fieldIntro": "Real, unfiltered footage from our shipyard and construction sites — see exactly how our team works. The gallery is updated regularly.",
+    "fieldBadge": "Field Photos"
   },
   "services": {
+    "sectionKicker": "Proven in the field,",
     "sectionTitle": "Where We Work",
+    "viewAll": "All Services",
+    "pageEyebrow": "OUR SERVICES",
+    "pageTitle": "End-to-end engineering, at sea and on land",
+    "pageIntro": "From shipyard new-build and repair to steel construction, infrastructure, and civil works — four core areas backed by field experience and engineering discipline.",
+    "detailCta": "Have a project in this area? Tell us about it.",
+    "viewDetails": "View Details",
     "tersaneGemiInsa": {
       "title": "Shipyard New-Build",
-      "description": "Expertise in pre-fabrication, block joining, steel, outfitting, piping, and insulation for military and civil vessel projects."
+      "description": "Expertise in pre-fabrication, block joining, steel, outfitting, piping, and insulation for military and civil vessel projects.",
+      "detail": "In new-build, NFT Group has served on both military and civil projects. We hold expertise in pre-fabrication, block joining, steel, outfitting, piping, and insulation work. We've taken active roles in keel-laying operations, ship launch operations, stem-post fabrication, and hull heat-straightening in the new-build yard.",
+      "items": ["Pre-fabrication", "Block joining", "Steelwork", "Outfitting", "Piping", "Insulation", "Keel-laying operations", "Ship launch operations", "Stem-post fabrication", "Hull heat-straightening"]
     },
     "tersaneTamir": {
       "title": "Shipyard Repair",
-      "description": "Hull steel, outfitting, chrome, copper, aluminum, and steel repair and replacement; ship recycling and dismantling operations."
+      "description": "Hull steel, outfitting, chrome, copper, aluminum, and steel repair and replacement; ship recycling and dismantling operations.",
+      "detail": "In repair, we handle hull-wide steel and outfitting repairs, chrome, copper, PVC, aluminum, and steel material repair and replacement, and piping outfitting work. We also have the capacity for ship dismantling, recycling project operations, and floating dock repair, maintenance, and overhaul.",
+      "items": ["Hull steel repair", "Outfitting repair", "Chrome, copper, PVC, aluminum, steel repair", "Piping outfitting", "Ship dismantling", "Recycling operations", "Floating dock maintenance"]
     },
     "altyapiVeCelikInsa": {
       "title": "Infrastructure & Steel Construction",
-      "description": "Infrastructure, steel building construction, workshop construction, steel structures, roofing, platforms, and ironwork."
+      "description": "Infrastructure, steel building construction, workshop construction, steel structures, roofing, platforms, and ironwork.",
+      "detail": "We have experience in infrastructure, steel building construction, infrastructural piping work (natural gas, plumbing, etc.), and workshop construction including panel cladding and crane rail installation. Our project history includes steel structures such as enclosed spaces, roofing, platforms, pergolas and rest areas, exhibition spaces, and canopies. We also handle ironwork, bending, wrought iron, and light steel work in-house.",
+      "items": ["Infrastructure work", "Steel building construction", "Infrastructural piping", "Workshop construction", "Steel structures", "Pergolas & rest areas", "Exhibition spaces & canopies", "Ironwork, bending, wrought iron"]
     },
     "insaatSektoru": {
       "title": "Construction",
-      "description": "Reinforced concrete buildings, facade insulation, pool construction, architectural support, and 3D presentation services."
+      "description": "Reinforced concrete buildings, facade insulation, pool construction, architectural support, and 3D presentation services.",
+      "detail": "In construction, we provide reinforced concrete homes and buildings, facade insulation solutions, tiling work, landscaping, pool construction, wooden pergola and roofing work, renovation projects, architectural support, 3D presentation, and process consulting services.",
+      "items": ["Reinforced concrete buildings", "Facade insulation", "Tiling", "Landscaping", "Pool construction", "Wooden pergola & roofing", "Renovation projects", "Architectural support & 3D presentation"]
     }
   },
   "about": {
+    "sideLabel": "About Us",
+    "teaserKicker": "Not just talk,",
+    "teaserTitle": "A trusted engineering team in shipyard and construction;",
     "missionTitle": "Our Mission",
     "mission": "Our core mission is to complete projects to the highest standards by delivering reliable, high-quality, and sustainable solutions across shipyard, construction, and industrial services.",
     "visionTitle": "Our Vision",
-    "vision": "To become a benchmark brand in shipyard, construction, and industrial services through an innovative approach, strong field organization, and a quality-first mindset."
+    "vision": "To become a benchmark brand in shipyard, construction, and industrial services through an innovative approach, strong field organization, and a quality-first mindset.",
+    "capabilities": {
+      "military": "Military & Civil Projects",
+      "floatingDock": "Floating Dock Capacity",
+      "disciplines": "4 Core Disciplines",
+      "location": "Altınova / Yalova Yard"
+    },
+    "pageEyebrow": "ABOUT US",
+    "pageTitle": "A young, dynamic, and solution-driven engineering team",
+    "pageIntro": "We bring together work discipline, an engineering perspective, and field experience to deliver timely, dependable service to our clients.",
+    "contactTitle": "Contact Details",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "workforceEyebrow": "OUR PEOPLE ON SITE",
+    "workforceMessage": "Behind every project stands a team that puts on the hard hat, clips in the harness, and does the work with real craftsmanship."
+  },
+  "projects": {
+    "pageEyebrow": "OUR PROJECTS",
+    "pageTitle": "Scenes from the field",
+    "pageIntro": "A selection from our shipyard and construction sites. The gallery is updated regularly.",
+    "emptyState": "The gallery will be here soon.",
+    "filterAll": "All",
+    "browse": "Browse Gallery"
+  },
+  "featured": {
+    "eyebrow": "FROM THE FIELD",
+    "title": "On-site for an international ferry delivery",
+    "description": "Our team worked on block joining, steel, and outfitting during the new-build process of a passenger and vehicle ferry. The vessel was launched in a formal ceremony and delivered to an international operator."
+  },
+  "news": {
+    "kicker": "From the field and the industry,",
+    "sectionTitle": "News",
+    "viewAll": "View All",
+    "pageEyebrow": "NEWS",
+    "pageTitle": "Industry news and field notes",
+    "pageIntro": "Up-to-date insights and field experience from shipbuilding, repair, steel construction, and civil construction.",
+    "readMore": "Read More",
+    "backToNews": "All News",
+    "relatedTitle": "Related News"
+  },
+  "faq": {
+    "eyebrow": "FREQUENTLY ASKED QUESTIONS",
+    "title": "Common questions",
+    "intro": "We've gathered the questions we hear most about our projects and how we work. Can't find what you're looking for? Reach out directly.",
+    "imageCaption": "From the field, a real hull-block lift in progress.",
+    "items": {
+      "scope": {
+        "question": "What kind of projects do you work on?",
+        "answer": "We provide end-to-end engineering across four core areas — shipyard new-build and repair, steel construction, infrastructure, and civil construction — for both military and civil projects."
+      },
+      "locations": {
+        "question": "Do you only operate in Yalova?",
+        "answer": "Our main yard is based in Altınova/Yalova, but our teams carry out field operations on shipyard and construction projects across Türkiye."
+      },
+      "timeline": {
+        "question": "How long does a project take?",
+        "answer": "Timelines vary with project scope, scale, and site conditions. After we receive your request, our team runs a site survey and engineering assessment to give you a clear schedule."
+      },
+      "quote": {
+        "question": "How do I get a quote?",
+        "answer": "Just share your project type and details through the contact form. Our team will get back to you within 1 business day to plan the next steps."
+      },
+      "military": {
+        "question": "Do you have experience with military projects?",
+        "answer": "Yes. We've worked on both military and civil projects in new-build and repair, with expertise in block joining, steel, outfitting, piping, and insulation work."
+      }
+    }
   },
   "contact": {
+    "pageEyebrow": "CONTACT",
+    "sectionKicker": "Ready to talk,",
+    "bannerKicker": "Have a project?",
     "sectionTitle": "Get in Touch",
     "sectionSubtitle": "Share your project details and we'll get back to you shortly.",
+    "projectTypes": {
+      "tersane_gemi_insa": "Shipyard New-Build",
+      "tersane_tamir": "Shipyard Repair",
+      "altyapi_ve_celik_insa": "Infrastructure & Steel Construction",
+      "insaat_sektoru": "Construction"
+    },
     "form": {
+      "title": "Project Request Form",
+      "subtitle": "Fill in the details below and our team will get back to you within 1 business day.",
       "name": "Full Name",
       "company": "Company (optional)",
       "phone": "Phone",

@@ -1,0 +1,86 @@
+"use client";
+
+import { useActionState } from "react";
+import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { LogoMark } from "@/components/marketing/logo-mark";
+import { login, type LoginState } from "./actions";
+
+export default function AdminLoginPage() {
+  const [state, formAction, isPending] = useActionState<LoginState, FormData>(
+    login,
+    undefined,
+  );
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-surface-2 px-6">
+      <div className="w-full max-w-sm rounded-2xl border border-border bg-white p-8 shadow-sm">
+        <div className="mb-8 flex flex-col items-center gap-3 text-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy">
+            <LogoMark className="h-8 w-8" />
+          </div>
+          <div>
+            <p className="font-stencil text-sm font-bold tracking-[0.15em] text-navy uppercase">
+              NFT Group
+            </p>
+            <p className="mt-1 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Yönetim Paneli
+            </p>
+          </div>
+        </div>
+
+        <form action={formAction} className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="email" className="text-xs text-muted-foreground uppercase tracking-wide">
+              E-posta
+            </Label>
+            <div className="relative">
+              <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="h-12 rounded-md border-border bg-surface-2 pl-10 text-[15px] focus-visible:border-gold focus-visible:ring-gold/25"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="password" className="text-xs text-muted-foreground uppercase tracking-wide">
+              Şifre
+            </Label>
+            <div className="relative">
+              <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="h-12 rounded-md border-border bg-surface-2 pl-10 text-[15px] focus-visible:border-gold focus-visible:ring-gold/25"
+              />
+            </div>
+          </div>
+
+          {state?.error && (
+            <p className="text-xs font-medium text-destructive">{state.error}</p>
+          )}
+
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="mt-2 h-12 gap-2 rounded-full bg-gold text-[15px] font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold hover:shadow-glow-gold hover:brightness-110"
+          >
+            {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
+            {isPending ? "Giriş yapılıyor..." : "Giriş Yap"}
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+}

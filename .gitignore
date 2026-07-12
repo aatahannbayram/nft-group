@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# admin-uploaded gallery photos (runtime data, not source)
+/public/uploads
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

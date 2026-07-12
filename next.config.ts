@@ -8,14 +8,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
-  images: {
-    remotePatterns: [
-      {
-        // Cloudflare R2 public bucket URL — update hostname once the bucket is created
-        protocol: "https",
-        hostname: "pub-*.r2.dev",
-      },
-    ],
+  experimental: {
+    serverActions: {
+      // Admin gallery photo uploads go through a Server Action; the 1MB
+      // default is too small for camera-quality photos.
+      bodySizeLimit: "10mb",
+    },
   },
 };
 
