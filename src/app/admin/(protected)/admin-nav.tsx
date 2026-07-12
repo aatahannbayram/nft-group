@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Image as ImageIcon, Inbox, FileText, Newspaper } from "lucide-react";
+import { Image as ImageIcon, Inbox, FileText, Newspaper, LayoutDashboard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
+  { href: "/admin", label: "Genel Bakış", icon: LayoutDashboard },
   { href: "/admin/talepler", label: "Talepler", icon: Inbox },
   { href: "/admin/galeri", label: "Galeri", icon: ImageIcon },
   { href: "/admin/haberler", label: "Haberler", icon: Newspaper },
@@ -18,7 +19,8 @@ export function AdminNav() {
   return (
     <nav className="mt-4 flex flex-1 flex-col gap-1 px-3">
       {NAV_ITEMS.map((item) => {
-        const active = pathname?.startsWith(item.href);
+        const active =
+          item.href === "/admin" ? pathname === "/admin" : pathname?.startsWith(item.href);
         return (
           <Link
             key={item.href}

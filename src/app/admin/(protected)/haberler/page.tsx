@@ -13,7 +13,8 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { PROJECT_TYPE_LABELS } from "@/lib/admin/labels";
-import { DeleteButton } from "./delete-button";
+import { AdminDeleteButton } from "@/components/admin/delete-button";
+import { deleteArticle } from "./actions";
 
 const dateFormatter = new Intl.DateTimeFormat("tr-TR", {
   day: "numeric",
@@ -94,7 +95,12 @@ export default async function HaberlerPage() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <DeleteButton id={article.id} />
+                    <AdminDeleteButton
+                      id={article.id}
+                      action={deleteArticle}
+                      confirmMessage="Bu haberi silmek istediğinizden emin misiniz?"
+                      errorMessage="Haber silinemedi."
+                    />
                   </TableCell>
                 </TableRow>
               ))}

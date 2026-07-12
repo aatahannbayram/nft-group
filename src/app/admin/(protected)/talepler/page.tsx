@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { desc } from "drizzle-orm";
 import { getDb } from "@/lib/db";
-import { projectInquiries } from "@/lib/db/schema";
+import { projectInquiries, type ProjectInquiry } from "@/lib/db/schema";
 import {
   Table,
   TableBody,
@@ -9,9 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 import { PROJECT_TYPE_LABELS } from "@/lib/admin/labels";
+import { AdminDeleteButton } from "@/components/admin/delete-button";
 import { StatusSelect } from "./status-select";
-import { DeleteButton } from "./delete-button";
+import { deleteInquiry } from "./actions";
 
 const dateFormatter = new Intl.DateTimeFormat("tr-TR", {
   day: "numeric",
@@ -21,20 +24,37 @@ const dateFormatter = new Intl.DateTimeFormat("tr-TR", {
   minute: "2-digit",
 });
 
-export default async function TaleplerPage() {
+const FILTERS = [
+  { key: "all", label: "Toplam", match: () => true },
+  { key: "new", label: "Yeni", match: (i: ProjectInquiry) => i.status === "new" },
+  {
+    key: "in_progress",
+    label: "Sürüyor",
+    match: (i: ProjectInquiry) => i.status === "contacted" || i.status === "in_progress",
+  },
+  { key: "closed", label: "Tamamlandı", match: (i: ProjectInquiry) => i.status === "closed" },
+  { key: "archived", label: "Arşivlendi", match: (i: ProjectInquiry) => i.status === "archived" },
+] as const;
+
+type FilterKey = (typeof FILTERS)[number]["key"];
+
+export default async function TaleplerPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const { status } = await searchParams;
+  const activeFilter: FilterKey = FILTERS.some((f) => f.key === status)
+    ? (status as FilterKey)
+    : "all";
+
   const inquiries = await getDb()
     .select()
     .from(projectInquiries)
     .orderBy(desc(projectInquiries.createdAt));
 
-  const counts = {
-    total: inquiries.length,
-    new: inquiries.filter((i) => i.status === "new").length,
-    inProgress: inquiries.filter(
-      (i) => i.status === "contacted" || i.status === "in_progress",
-    ).length,
-    closed: inquiries.filter((i) => i.status === "closed").length,
-  };
+  const activeMatch = FILTERS.find((f) => f.key === activeFilter)!.match;
+  const filtered = inquiries.filter(activeMatch);
 
   return (
     <div className="flex flex-col gap-6">
@@ -47,29 +67,32 @@ export default async function TaleplerPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div className="rounded-xl border border-border bg-white p-4">
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Toplam</p>
-          <p className="mt-1 font-display text-2xl font-bold text-foreground">{counts.total}</p>
-        </div>
-        <div className="rounded-xl border border-border bg-white p-4">
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Yeni</p>
-          <p className="mt-1 font-display text-2xl font-bold text-gold">{counts.new}</p>
-        </div>
-        <div className="rounded-xl border border-border bg-white p-4">
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sürüyor</p>
-          <p className="mt-1 font-display text-2xl font-bold text-navy">{counts.inProgress}</p>
-        </div>
-        <div className="rounded-xl border border-border bg-white p-4">
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Tamamlandı</p>
-          <p className="mt-1 font-display text-2xl font-bold text-foreground">{counts.closed}</p>
-        </div>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
+        {FILTERS.map((filter) => {
+          const count = inquiries.filter(filter.match).length;
+          const isActive = filter.key === activeFilter;
+          return (
+            <Link
+              key={filter.key}
+              href={filter.key === "all" ? "/admin/talepler" : `/admin/talepler?status=${filter.key}`}
+              className={cn(
+                "rounded-xl border bg-white p-4 transition-colors",
+                isActive ? "border-gold ring-1 ring-gold" : "border-border hover:border-navy/20",
+              )}
+            >
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">
+                {filter.label}
+              </p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground">{count}</p>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="rounded-xl border border-border bg-white">
-        {inquiries.length === 0 ? (
+        {filtered.length === 0 ? (
           <p className="p-8 text-center text-sm text-muted-foreground">
-            Henüz talep yok.
+            {inquiries.length === 0 ? "Henüz talep yok." : "Bu filtreye uyan talep yok."}
           </p>
         ) : (
           <Table>
@@ -85,7 +108,7 @@ export default async function TaleplerPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {inquiries.map((inquiry) => (
+              {filtered.map((inquiry) => (
                 <TableRow key={inquiry.id}>
                   <TableCell className="text-xs text-muted-foreground">
                     {dateFormatter.format(inquiry.createdAt)}
@@ -117,7 +140,12 @@ export default async function TaleplerPage() {
                     <StatusSelect id={inquiry.id} status={inquiry.status} />
                   </TableCell>
                   <TableCell>
-                    <DeleteButton id={inquiry.id} />
+                    <AdminDeleteButton
+                      id={inquiry.id}
+                      action={deleteInquiry}
+                      confirmMessage="Bu talebi silmek istediğinizden emin misiniz?"
+                      errorMessage="Talep silinemedi."
+                    />
                   </TableCell>
                 </TableRow>
               ))}

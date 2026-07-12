@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getAllNewsArticles, getAllNewsSlugs, getNewsArticle } from "@/lib/news-data";
+import { getAllNewsSlugs, getNewsArticle, getRelatedNewsArticles } from "@/lib/news-data";
 import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 
 export async function generateStaticParams() {
@@ -50,10 +50,7 @@ export default async function NewsDetailPage({
     year: "numeric",
   });
 
-  const allArticles = await getAllNewsArticles();
-  const related = allArticles
-    .filter((a) => a.slug !== slug && a.category === article.category)
-    .slice(0, 3);
+  const related = await getRelatedNewsArticles(article.category, slug, 3);
 
   return (
     <>

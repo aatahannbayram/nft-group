@@ -59,3 +59,16 @@ export const verifySession = cache(async () => {
   const session = await decrypt(cookieStore.get(COOKIE_NAME)?.value);
   return session?.role === "admin";
 });
+
+/**
+ * Guard for Server Actions. The (protected) layout's redirect only covers
+ * page navigation — Server Actions are directly POST-able and must verify
+ * the session themselves. Call this first in every admin mutation instead
+ * of re-checking verifySession() inline, so the "unauthorized" behavior
+ * (and any future change to it, e.g. logging or roles) lives in one place.
+ */
+export async function requireAdmin() {
+  if (!(await verifySession())) {
+    throw new Error("Unauthorized");
+  }
+}

@@ -3,10 +3,11 @@ import { asc } from "drizzle-orm";
 import { getDb } from "@/lib/db";
 import { galleryItems } from "@/lib/db/schema";
 import { PROJECT_TYPE_LABELS } from "@/lib/admin/labels";
+import { AdminDeleteButton } from "@/components/admin/delete-button";
 import { UploadForm } from "./upload-form";
 import { PublishToggle } from "./publish-toggle";
 import { OrderInput } from "./order-input";
-import { DeleteButton } from "./delete-button";
+import { deleteGalleryItem } from "./actions";
 
 export default async function GaleriPage() {
   const items = await getDb()
@@ -52,7 +53,13 @@ export default async function GaleriPage() {
                   <PublishToggle id={item.id} published={item.published} />
                 </div>
                 <div className="absolute top-2 right-2">
-                  <DeleteButton id={item.id} />
+                  <AdminDeleteButton
+                    id={item.id}
+                    action={deleteGalleryItem}
+                    confirmMessage="Bu fotoğrafı silmek istediğinizden emin misiniz?"
+                    errorMessage="Fotoğraf silinemedi."
+                    className="bg-white/90"
+                  />
                 </div>
               </div>
               <div className="flex items-center justify-between gap-2 p-3">

@@ -72,7 +72,9 @@ export async function SiteFooter() {
 
         <div className="mt-10 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 sm:grid-cols-4">
           <div className="flex items-center gap-2.5">
-            <LogoMark className="h-9 w-9" />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white p-1.5">
+              <LogoMark className="h-full w-full" />
+            </div>
             <span className="font-stencil text-sm leading-tight font-bold tracking-[0.15em] text-white uppercase">
               NFT
               <br />

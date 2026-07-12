@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
 import { siteSettings } from "@/lib/db/schema";
-import { verifySession } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import type { SettingKey } from "@/lib/settings";
 
 const settingsSchema = z.object({
@@ -27,7 +27,7 @@ export async function updateSettings(
   _prevState: SettingsState,
   formData: FormData,
 ): Promise<SettingsState> {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   const parsed = settingsSchema.safeParse({
     contact_phone: formData.get("contact_phone"),

@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { Loader2, Upload } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,13 +23,20 @@ export function UploadForm() {
   );
   const formRef = useRef<HTMLFormElement>(null);
 
+  // Only clear the form once the server action has actually confirmed
+  // success — resetting eagerly (before the result is known) would wipe
+  // out the admin's input while a validation error is still in flight.
+  useEffect(() => {
+    if (state?.success) {
+      formRef.current?.reset();
+      toast.success("Yüklendi.");
+    }
+  }, [state]);
+
   return (
     <form
       ref={formRef}
-      action={async (formData) => {
-        await formAction(formData);
-        formRef.current?.reset();
-      }}
+      action={formAction}
       className="flex flex-wrap items-end gap-4 rounded-xl border border-border bg-white p-5"
     >
       <div className="flex min-w-[180px] flex-1 flex-col gap-1.5">

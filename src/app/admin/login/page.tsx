@@ -18,9 +18,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-surface-2 px-6">
       <div className="w-full max-w-sm rounded-2xl border border-border bg-white p-8 shadow-sm">
         <div className="mb-8 flex flex-col items-center gap-3 text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy">
-            <LogoMark className="h-8 w-8" />
-          </div>
+          <LogoMark className="h-14 w-14" />
           <div>
             <p className="font-stencil text-sm font-bold tracking-[0.15em] text-navy uppercase">
               NFT Group

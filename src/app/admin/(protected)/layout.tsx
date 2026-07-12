@@ -20,9 +20,7 @@ export default async function AdminLayout({
     <div className="flex min-h-screen bg-surface-2">
       <aside className="flex w-60 shrink-0 flex-col border-r border-border bg-white">
         <div className="flex items-center gap-2.5 px-5 py-5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-navy">
-            <LogoMark className="h-5 w-5" />
-          </div>
+          <LogoMark className="h-8 w-8" />
           <span className="font-stencil text-xs leading-tight font-bold tracking-[0.15em] text-navy uppercase">
             NFT
             <br />

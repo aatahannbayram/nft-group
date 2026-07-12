@@ -4,12 +4,12 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { getDb } from "@/lib/db";
 import { projectInquiries, inquiryStatusEnum } from "@/lib/db/schema";
-import { verifySession } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 
 type InquiryStatus = (typeof inquiryStatusEnum.enumValues)[number];
 
 export async function updateInquiryStatus(id: string, status: InquiryStatus) {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   await getDb()
     .update(projectInquiries)
@@ -20,7 +20,7 @@ export async function updateInquiryStatus(id: string, status: InquiryStatus) {
 }
 
 export async function deleteInquiry(id: string) {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   await getDb().delete(projectInquiries).where(eq(projectInquiries.id, id));
 

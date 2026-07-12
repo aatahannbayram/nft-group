@@ -1,10 +1,10 @@
 "use server";
 
-import { Resend } from "resend";
 import { getDb } from "@/lib/db";
 import { projectInquiries } from "@/lib/db/schema";
 import { inquirySchema } from "@/lib/validations/inquiry";
 import { getSiteSettings } from "@/lib/settings";
+import { getMailer } from "@/lib/mailer";
 
 export async function submitInquiry(input: unknown) {
   const parsed = inquirySchema.safeParse(input);
@@ -30,14 +30,11 @@ export async function submitInquiry(input: unknown) {
       budgetRange: budgetRange || undefined,
     });
 
-  if (process.env.RESEND_API_KEY) {
+  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
     try {
       const { contact_email } = await getSiteSettings();
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
-        // Resend's shared sandbox sender — works without a verified domain.
-        // Swap for a verified nftgroup.com.tr address once the domain is set up.
-        from: "NFT Group Site <onboarding@resend.dev>",
+      await getMailer().sendMail({
+        from: `NFT Group Site <${process.env.SMTP_USER}>`,
         to: contact_email,
         subject: `Yeni Proje Talebi: ${name} — ${projectType}`,
         text: [
@@ -55,7 +52,7 @@ export async function submitInquiry(input: unknown) {
       });
     } catch (err) {
       // Notification is best-effort — the inquiry is already saved.
-      console.error("Resend notification failed", err);
+      console.error("SMTP notification failed", err);
     }
   }
 

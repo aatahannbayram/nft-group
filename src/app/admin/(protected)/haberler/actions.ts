@@ -1,24 +1,14 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
-import { mkdir, unlink, writeFile } from "node:fs/promises";
-import path from "node:path";
+import { NeonDbError } from "@neondatabase/serverless";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
 import { newsArticles, projectTypeEnum } from "@/lib/db/schema";
-import { verifySession } from "@/lib/auth/session";
-
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "news");
-
-const EXTENSION_BY_MIME: Record<string, string> = {
-  "image/jpeg": "jpg",
-  "image/png": "png",
-  "image/webp": "webp",
-  "image/avif": "avif",
-};
+import { requireAdmin } from "@/lib/auth/session";
+import { deleteUploadedImage, saveUploadedImage, UnsupportedImageTypeError } from "@/lib/uploads";
 
 const articleSchema = z.object({
   slug: z
@@ -63,43 +53,44 @@ function parseFormData(formData: FormData) {
   };
 }
 
-async function saveImageIfProvided(formData: FormData): Promise<string | null> {
-  const file = formData.get("image");
-  if (!(file instanceof File) || file.size === 0) return null;
-
-  const extension = EXTENSION_BY_MIME[file.type];
-  if (!extension) throw new Error("Desteklenmeyen dosya türü.");
-
-  await mkdir(UPLOAD_DIR, { recursive: true });
-  const filename = `${randomUUID()}.${extension}`;
-  const bytes = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(UPLOAD_DIR, filename), bytes);
-  return `/uploads/news/${filename}`;
-}
-
 export async function createArticle(
   _prevState: ArticleState,
   formData: FormData,
 ): Promise<ArticleState> {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   const parsed = articleSchema.safeParse(parseFormData(formData));
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Geçersiz giriş." };
   }
 
-  const imagePath = await saveImageIfProvided(formData);
+  let imagePath: string | null;
+  try {
+    imagePath = await saveUploadedImage(formData, "image", "news");
+  } catch (err) {
+    if (err instanceof UnsupportedImageTypeError) return { error: err.message };
+    throw err;
+  }
   if (!imagePath) {
     return { error: "Bir görsel seçin." };
   }
 
-  await getDb()
-    .insert(newsArticles)
-    .values({
-      ...parsed.data,
-      image: imagePath,
-      publishedAt: new Date(parsed.data.publishedAt),
-    });
+  try {
+    await getDb()
+      .insert(newsArticles)
+      .values({
+        ...parsed.data,
+        image: imagePath,
+        publishedAt: new Date(parsed.data.publishedAt),
+      });
+  } catch (err) {
+    // Insert failed — the file we just wrote would otherwise be orphaned.
+    await deleteUploadedImage(imagePath);
+    if (err instanceof NeonDbError && err.code === "23505") {
+      return { error: "Bu slug zaten kullanılıyor, farklı bir slug seçin." };
+    }
+    throw err;
+  }
 
   revalidatePath("/admin/haberler");
   revalidatePath("/", "layout");
@@ -111,23 +102,48 @@ export async function updateArticle(
   _prevState: ArticleState,
   formData: FormData,
 ): Promise<ArticleState> {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   const parsed = articleSchema.safeParse(parseFormData(formData));
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Geçersiz giriş." };
   }
 
-  const imagePath = await saveImageIfProvided(formData);
+  let imagePath: string | null;
+  try {
+    imagePath = await saveUploadedImage(formData, "image", "news");
+  } catch (err) {
+    if (err instanceof UnsupportedImageTypeError) return { error: err.message };
+    throw err;
+  }
 
-  await getDb()
-    .update(newsArticles)
-    .set({
-      ...parsed.data,
-      publishedAt: new Date(parsed.data.publishedAt),
-      ...(imagePath ? { image: imagePath } : {}),
-    })
+  const db = getDb();
+  const [existing] = await db
+    .select({ image: newsArticles.image })
+    .from(newsArticles)
     .where(eq(newsArticles.id, id));
+
+  try {
+    await db
+      .update(newsArticles)
+      .set({
+        ...parsed.data,
+        publishedAt: new Date(parsed.data.publishedAt),
+        ...(imagePath ? { image: imagePath } : {}),
+      })
+      .where(eq(newsArticles.id, id));
+  } catch (err) {
+    if (imagePath) await deleteUploadedImage(imagePath);
+    if (err instanceof NeonDbError && err.code === "23505") {
+      return { error: "Bu slug zaten kullanılıyor, farklı bir slug seçin." };
+    }
+    throw err;
+  }
+
+  // Replaced the cover image — the old file is no longer referenced anywhere.
+  if (imagePath && existing?.image) {
+    await deleteUploadedImage(existing.image);
+  }
 
   revalidatePath("/admin/haberler");
   revalidatePath("/", "layout");
@@ -135,7 +151,7 @@ export async function updateArticle(
 }
 
 export async function deleteArticle(id: string) {
-  if (!(await verifySession())) throw new Error("Unauthorized");
+  await requireAdmin();
 
   const db = getDb();
   const [article] = await db
@@ -144,10 +160,7 @@ export async function deleteArticle(id: string) {
     .where(eq(newsArticles.id, id));
 
   await db.delete(newsArticles).where(eq(newsArticles.id, id));
-
-  if (article?.image?.startsWith("/uploads/")) {
-    await unlink(path.join(process.cwd(), "public", article.image)).catch(() => {});
-  }
+  await deleteUploadedImage(article?.image);
 
   revalidatePath("/admin/haberler");
   revalidatePath("/", "layout");
