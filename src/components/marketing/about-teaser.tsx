@@ -8,24 +8,14 @@ export function AboutTeaser() {
   const t = useTranslations("about");
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-surface-2">
       <div
         aria-hidden
         className="bg-glow-navy pointer-events-none absolute -top-20 right-[8%] -z-0 h-72 w-72 opacity-15"
       />
       <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-16 md:py-24 lg:px-20">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="hidden lg:col-span-1 lg:flex lg:flex-col lg:items-center lg:gap-3">
-            <span
-              className="font-stencil text-xs font-semibold tracking-[0.2em] text-foreground/60 uppercase"
-              style={{ writingMode: "vertical-rl" }}
-            >
-              {t("sideLabel")}
-            </span>
-            <span className="h-10 w-px bg-gold" />
-          </div>
-
-          <ScrollReveal className="lg:col-span-6">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <ScrollReveal className="lg:col-span-5">
             <span className="block font-display text-lg font-light text-navy/50 italic sm:text-xl">
               {t("teaserKicker")}
             </span>
@@ -46,13 +36,13 @@ export function AboutTeaser() {
 
           <ScrollReveal
             delay={0.15}
-            className="photo-tone relative h-64 overflow-hidden rounded-xl shadow-md ring-1 ring-black/5 sm:h-80 lg:col-span-5 lg:h-auto"
+            className="photo-tone shadow-glow-navy relative h-80 overflow-hidden rounded-3xl ring-1 ring-black/5 sm:h-96 lg:col-span-7 lg:h-[28rem]"
           >
             <Image
               src="/images/real/crane-lift.jpg"
               alt=""
               fill
-              sizes="(min-width: 1024px) 40vw, 100vw"
+              sizes="(min-width: 1024px) 55vw, 100vw"
               className="object-cover"
             />
           </ScrollReveal>
