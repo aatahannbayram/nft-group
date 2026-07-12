@@ -13,7 +13,7 @@ const CATEGORIES = [
 ] as const;
 
 const STRIP_IMAGES = CATEGORIES.flatMap((category) =>
-  galleryItems.filter((item) => item.category === category).slice(0, 2),
+  galleryItems.filter((item) => item.category === category).slice(0, 3),
 );
 
 function categoryToMessageKey(category: string) {

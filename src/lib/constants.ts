@@ -27,7 +27,7 @@ export const services = [
   {
     slug: "insaat-sektoru",
     messageKey: "insaatSektoru",
-    image: "/images/real/interior-finish.jpg",
+    image: "/images/gallery/altyapi-ve-celik-insa/10.jpg",
     fxImage: "/images/services-fx/excavator-v4.png",
   },
 ] as const;
