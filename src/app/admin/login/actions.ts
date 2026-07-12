@@ -33,6 +33,16 @@ export async function login(
   const validPassword =
     adminPasswordHash && (await compare(password, adminPasswordHash));
 
+  console.log("[login-debug]", {
+    adminEmailLen: adminEmail?.length,
+    adminEmailRaw: JSON.stringify(adminEmail),
+    hashLen: adminPasswordHash?.length,
+    hashPrefix: adminPasswordHash?.slice(0, 12),
+    hashSuffix: adminPasswordHash?.slice(-12),
+    validEmail,
+    validPassword,
+  });
+
   if (!validEmail || !validPassword) {
     return { error: "E-posta veya şifre hatalı." };
   }
