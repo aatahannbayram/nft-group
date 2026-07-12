@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { GLSLHills } from "@/components/ui/glsl-hills";
 import { aboutCapabilities } from "@/lib/constants";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
@@ -14,25 +14,23 @@ export function Hero() {
   const about = useTranslations("about");
 
   return (
-    <section className="relative -mt-28 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-6 py-32 text-center md:-mt-20">
-      <div className="absolute inset-0">
-        <GLSLHills />
-      </div>
-
-      <div
-        aria-hidden
-        className="bg-glow-gold pointer-events-none absolute -top-24 right-[8%] -z-0 h-72 w-72 opacity-30 sm:h-96 sm:w-96"
+    <section className="relative -mt-28 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-navy px-6 py-32 text-center md:-mt-20">
+      <Image
+        src="/images/real/drydock-wide.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
-      <div
-        aria-hidden
-        className="bg-glow-navy pointer-events-none absolute bottom-0 left-[6%] -z-0 h-80 w-80 opacity-25 sm:h-[28rem] sm:w-[28rem]"
-      />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/30" />
+      <div className="absolute inset-0 bg-navy/20" />
 
       <motion.span
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: easeOut }}
-        className="glass relative z-10 mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-navy uppercase"
+        className="glass-dark relative z-10 mb-6 inline-flex w-fit items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-white uppercase"
       >
         {t("heroEyebrow")}
       </motion.span>
@@ -41,7 +39,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.06, ease: easeOut }}
-        className="relative z-10 max-w-3xl text-balance font-display leading-[1.1] tracking-tight text-navy"
+        className="relative z-10 max-w-3xl text-balance font-display leading-[1.1] tracking-tight text-white"
       >
         <span className="block text-3xl font-light italic sm:text-4xl md:text-5xl">
           {t("heroTitleLine1")}
@@ -55,7 +53,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.14, ease: easeOut }}
-        className="relative z-10 mt-6 max-w-lg text-[15px] text-navy/60 sm:text-base"
+        className="relative z-10 mt-6 max-w-lg text-[15px] text-white/70 sm:text-base"
       >
         {t("heroSubtitle")}
       </motion.p>
@@ -68,7 +66,7 @@ export function Hero() {
       >
         <Link
           href="/iletisim"
-          className="inline-flex items-center gap-2 rounded-full bg-navy px-7 py-4 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-navy hover:brightness-110"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:brightness-105"
         >
           {t("ctaPrimary")}
         </Link>
@@ -85,11 +83,11 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.26, ease: easeOut }}
-        className="glass relative z-10 mt-10 flex flex-wrap items-center justify-center gap-y-2 rounded-full px-6 py-3 text-[13px] font-medium text-navy/70"
+        className="glass-dark relative z-10 mt-10 flex flex-wrap items-center justify-center gap-y-2 rounded-full px-6 py-3 text-[13px] font-medium text-white/80"
       >
         {aboutCapabilities.map(({ key }, index) => (
           <span key={key} className="flex items-center gap-3">
-            {index > 0 && <span className="h-3 w-px bg-navy/15" aria-hidden />}
+            {index > 0 && <span className="h-3 w-px bg-white/20" aria-hidden />}
             <span className="px-3">{about(`capabilities.${key}`)}</span>
           </span>
         ))}
