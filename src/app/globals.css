@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -215,5 +224,10 @@
     );
     mix-blend-mode: multiply;
     pointer-events: none;
+  }
+
+  /* Continuous right-to-left image marquee — pairs with a duplicated image list */
+  .animate-marquee {
+    animation: marquee-scroll 44s linear infinite;
   }
 }
