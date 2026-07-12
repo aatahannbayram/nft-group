@@ -5,7 +5,7 @@ import { siteSettings } from "@/lib/db/schema";
 
 export const DEFAULT_SETTINGS = {
   contact_phone: "+90 545 602 91 85",
-  contact_email: "nftgroup.gim@gmail.com",
+  contact_email: "info@nftgim.com",
   contact_address: "Hürriyet Mahallesi, No:44/3B, Altınova/Yalova",
   ga_measurement_id: "",
   meta_pixel_id: "",
