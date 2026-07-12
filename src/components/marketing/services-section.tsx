@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Building2, Factory, Ship, Wrench } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -17,42 +16,9 @@ const ICONS = {
   insaatSektoru: Building2,
 } as const;
 
-function HexPattern() {
-  return (
-    <svg
-      aria-hidden
-      className="pointer-events-none absolute -bottom-8 -right-8 h-56 w-56 text-white"
-      style={{
-        maskImage: "radial-gradient(circle at bottom right, black 0%, transparent 72%)",
-        WebkitMaskImage: "radial-gradient(circle at bottom right, black 0%, transparent 72%)",
-      }}
-    >
-      <defs>
-        <pattern
-          id="services-hex"
-          width="26"
-          height="30"
-          patternUnits="userSpaceOnUse"
-          patternTransform="translate(13,0)"
-        >
-          <polygon
-            points="13,0 26,7.5 26,22.5 13,30 0,22.5 0,7.5"
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity="0.4"
-            strokeWidth="1"
-          />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#services-hex)" />
-    </svg>
-  );
-}
-
 export function ServicesSection() {
   const t = useTranslations("services");
   const [active, setActive] = useState(0);
-  const activeService = services[active];
 
   return (
     <section className="relative w-full bg-white">
@@ -77,88 +43,60 @@ export function ServicesSection() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.12} className="relative mt-12 rounded-3xl bg-surface-2 p-3 sm:p-4">
-          {/* Preload every fx image up front so hovering between cards swaps instantly */}
-          <div className="sr-only" aria-hidden>
-            {services.map((service) => (
-              <Image
-                key={service.fxImage}
-                src={service.fxImage}
-                alt=""
-                width={1}
-                height={1}
-                priority
-              />
-            ))}
-          </div>
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {services.map((service, index) => {
+            const Icon = ICONS[service.messageKey];
+            const isActive = index === active;
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-            {services.map((service, index) => {
-              const Icon = ICONS[service.messageKey];
-              const isActive = index === active;
-
-              return (
+            return (
+              <ScrollReveal key={service.slug} delay={0.06 * index}>
                 <Link
-                  key={service.slug}
                   href={`/hizmetler/${service.slug}`}
                   onMouseEnter={() => setActive(index)}
                   onFocus={() => setActive(index)}
-                  className={cn(
-                    "group relative flex min-h-[13rem] flex-col items-start overflow-hidden rounded-2xl p-7 text-left transition-all duration-500 sm:min-h-[16rem] sm:p-8",
-                    isActive
-                      ? "bg-gradient-gold text-white shadow-glow-gold"
-                      : "glass text-foreground hover:-translate-y-1 hover:shadow-lg"
-                  )}
+                  className="photo-tone group relative flex min-h-[16rem] flex-col justify-end overflow-hidden rounded-2xl p-7 text-white shadow-lg transition-all duration-500 sm:min-h-[20rem] sm:p-8"
                 >
-                  {isActive && <HexPattern />}
-
-                  <Icon
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
                     className={cn(
-                      "relative h-6 w-6 transition-colors duration-500",
-                      isActive ? "text-white" : "text-gold"
+                      "object-cover transition-transform duration-700 ease-out",
+                      isActive ? "scale-110" : "scale-100 group-hover:scale-105"
                     )}
-                    strokeWidth={1.5}
                   />
+                  <div
+                    aria-hidden
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-t transition-colors duration-500",
+                      isActive
+                        ? "from-navy/95 via-navy/50 to-navy/10"
+                        : "from-black/85 via-black/35 to-black/5"
+                    )}
+                  />
+
+                  <span
+                    className={cn(
+                      "relative flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-500",
+                      isActive ? "bg-gold text-white" : "bg-white/15 text-white backdrop-blur-sm"
+                    )}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.5} />
+                  </span>
 
                   <h3 className="relative mt-5 max-w-[14rem] font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl">
                     {t(`${service.messageKey}.title`)}
                   </h3>
 
-                  <span
-                    className={cn(
-                      "relative mt-4 text-sm font-medium underline underline-offset-4 transition-colors duration-500",
-                      isActive ? "text-white/90" : "text-muted-foreground"
-                    )}
-                  >
+                  <span className="relative mt-4 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-white/90 underline underline-offset-4">
                     {t("viewDetails")}
                   </span>
                 </Link>
-              );
-            })}
-          </div>
-
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden h-[40%] w-[50%] -translate-x-1/2 -translate-y-1/2 sm:block">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService.slug}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="relative h-full w-full"
-              >
-                <Image
-                  src={activeService.fxImage}
-                  alt=""
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 420px, 320px"
-                  className="object-contain drop-shadow-2xl"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </ScrollReveal>
+              </ScrollReveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
