@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ScrollReveal } from "@/components/marketing/scroll-reveal";
-import { SectionDivider } from "@/components/marketing/section-divider";
 
 const MARQUEE_IMAGES = [
   "/images/gallery/featured/01.jpg",
@@ -21,12 +20,6 @@ export function FieldStrip() {
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-navy py-20 md:py-24">
-      <SectionDivider from="var(--background)" to="var(--navy)" className="absolute inset-x-0 top-0" />
-      <SectionDivider
-        from="var(--navy)"
-        to="var(--surface-2)"
-        className="absolute inset-x-0 bottom-0"
-      />
       <div
         aria-hidden
         className="bg-glow-navy pointer-events-none absolute -top-16 left-1/2 -z-0 h-80 w-80 -translate-x-1/2 opacity-20"

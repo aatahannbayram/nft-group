@@ -48,7 +48,7 @@ export function StatsSection() {
   const disciplineCount = services.length;
 
   return (
-    <section className="relative w-full bg-background">
+    <section className="relative hidden w-full bg-background sm:block">
       <div className="mx-auto max-w-7xl px-6 pb-16 md:px-16 lg:px-20">
         <ScrollReveal className="glass-accent shadow-glow-navy relative -mt-8 overflow-hidden rounded-3xl px-6 py-10 sm:-mt-12 sm:px-10 sm:py-12">
           <div

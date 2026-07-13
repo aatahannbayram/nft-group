@@ -42,7 +42,7 @@ export function FaqSection() {
         <div className="mt-10 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
           <ScrollReveal
             delay={0.1}
-            className="photo-tone shadow-glow-navy relative hidden min-h-[28rem] w-full overflow-hidden rounded-3xl ring-1 ring-black/5 lg:col-span-4 lg:block"
+            className="photo-tone shadow-glow-navy relative h-56 w-full overflow-hidden rounded-3xl ring-1 ring-black/5 sm:h-72 lg:col-span-4 lg:h-auto lg:min-h-[28rem]"
           >
             <Image
               src="/images/real/hull-block-lift.jpg"

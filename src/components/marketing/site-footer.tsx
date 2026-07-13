@@ -2,7 +2,6 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LogoMark } from "@/components/marketing/logo-mark";
-import { SectionDivider } from "@/components/marketing/section-divider";
 import { getSiteSettings } from "@/lib/settings";
 
 export async function SiteFooter() {
@@ -18,8 +17,7 @@ export async function SiteFooter() {
   const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(contact_address)}`;
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-navy text-white">
-      <SectionDivider from="var(--background)" to="var(--navy)" className="absolute inset-x-0 top-0" />
+    <footer className="relative overflow-hidden border-t-4 border-navy bg-gradient-navy text-white">
       <div className="absolute inset-0 bg-blueprint opacity-[0.06] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div
         aria-hidden

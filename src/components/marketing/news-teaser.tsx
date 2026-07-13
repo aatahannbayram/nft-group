@@ -52,29 +52,23 @@ export async function NewsTeaser() {
             <ScrollReveal key={article.slug} delay={0.1 + index * 0.08}>
               <Link
                 href={`/haberler/${article.slug}`}
-                className="glass group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="photo-tone group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl p-6 text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="photo-tone relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={article.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col gap-2 p-6">
-                  <span className="font-stencil text-[11px] font-semibold tracking-[0.15em] text-steel uppercase">
-                    {tServices(`${categoryToMessageKey(article.category)}.title`)} ·{" "}
-                    {dateFormatter.format(new Date(article.publishedAt))}
-                  </span>
-                  <h3 className="font-display text-lg font-bold leading-snug tracking-tight text-foreground">
-                    {article[locale].title}
-                  </h3>
-                  <p className="line-clamp-2 text-[13px] leading-relaxed text-muted-foreground">
-                    {article[locale].excerpt}
-                  </p>
-                </div>
+                <Image
+                  src={article.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/45 to-navy/5" />
+                <span className="relative font-stencil text-[11px] font-semibold tracking-[0.15em] text-white/70 uppercase">
+                  {tServices(`${categoryToMessageKey(article.category)}.title`)} ·{" "}
+                  {dateFormatter.format(new Date(article.publishedAt))}
+                </span>
+                <h3 className="relative mt-2 font-display text-lg font-bold leading-snug tracking-tight">
+                  {article[locale].title}
+                </h3>
               </Link>
             </ScrollReveal>
           ))}
