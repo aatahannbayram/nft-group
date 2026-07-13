@@ -24,9 +24,9 @@ export default async function ServiceDetailPage({
 
   const t = await getTranslations("services");
   const otherServices = services.filter((s) => s.slug !== slug);
-  const gallery = galleryItems
-    .filter((item) => item.category === slug)
-    .slice(0, 3);
+  const categoryGallery = galleryItems.filter((item) => item.category === slug);
+  const accentImage = categoryGallery[0];
+  const gallery = categoryGallery.slice(1, 7);
 
   return (
     <>
@@ -46,30 +46,47 @@ export default async function ServiceDetailPage({
           <p className="font-stencil text-sm font-semibold tracking-[0.25em] text-gold uppercase">
             {t("pageEyebrow")}
           </p>
-          <h1 className="mt-4 text-balance font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h1 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
             {t(`${service.messageKey}.title`)}
           </h1>
         </ScrollReveal>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-20">
-        <ScrollReveal>
-          <p className="text-lg leading-relaxed text-foreground/90">
-            {t(`${service.messageKey}.detail`)}
-          </p>
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
+          <ScrollReveal className="lg:col-span-7">
+            <p className="text-lg leading-relaxed text-foreground/90">
+              {t(`${service.messageKey}.detail`)}
+            </p>
 
-          <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
-            {t.raw(`${service.messageKey}.items`).map((item: string) => (
-              <li
-                key={item}
-                className="flex items-center gap-3 text-sm text-muted-foreground"
-              >
-                <span className="h-px w-4 shrink-0 bg-gold" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </ScrollReveal>
+            <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+              {t.raw(`${service.messageKey}.items`).map((item: string) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-3 text-sm text-muted-foreground"
+                >
+                  <span className="h-px w-4 shrink-0 bg-gold" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+
+          {accentImage && (
+            <ScrollReveal
+              delay={0.1}
+              className="photo-tone shadow-glow-navy relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-black/5 lg:col-span-5"
+            >
+              <Image
+                src={accentImage.image}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </ScrollReveal>
+          )}
+        </div>
 
         {gallery.length > 0 && (
           <div className="mt-14 grid grid-cols-3 gap-3">
@@ -108,9 +125,17 @@ export default async function ServiceDetailPage({
             <ScrollReveal key={other.slug} delay={index * 0.08}>
               <Link
                 href={`/hizmetler/${other.slug}`}
-                className="glass group block rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                className="photo-tone group relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl p-5 text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <span className="font-stencil text-xs font-semibold tracking-wider text-gold">
+                <Image
+                  src={other.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-navy/5" />
+                <span className="relative font-display text-base font-bold leading-tight tracking-tight">
                   {t(`${other.messageKey}.title`)}
                 </span>
               </Link>

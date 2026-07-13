@@ -6,10 +6,10 @@ export function CapabilityStatement() {
   const t = useTranslations("home");
 
   return (
-    <section className="relative w-full bg-white">
+    <section className="relative w-full bg-background">
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 text-center md:px-16 md:pt-28 md:pb-16 lg:px-20">
         <ScrollReveal className="mx-auto max-w-4xl">
-          <h2 className="text-balance font-display text-3xl font-bold uppercase leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="text-balance font-display text-xl font-semibold leading-[1.25] tracking-tight text-foreground sm:text-2xl md:text-3xl">
             {t("statementTitle1")}
           </h2>
         </ScrollReveal>
@@ -28,7 +28,7 @@ export function CapabilityStatement() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15} className="mx-auto max-w-4xl">
-          <h2 className="text-balance font-display text-3xl font-bold uppercase leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="text-balance font-display text-xl font-semibold leading-[1.25] tracking-tight text-foreground sm:text-2xl md:text-3xl">
             {t("statementTitle2")}
           </h2>
         </ScrollReveal>

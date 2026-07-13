@@ -39,10 +39,10 @@ export default async function ContactPage() {
           <p className="font-stencil text-sm font-semibold tracking-[0.25em] text-gold uppercase">
             {t("pageEyebrow")}
           </p>
-          <span className="mt-3 block font-display text-lg font-light text-navy/50 italic sm:text-xl">
+          <span className="mt-3 block font-display text-lg font-medium text-steel sm:text-xl">
             {t("sectionKicker")}
           </span>
-          <h1 className="mt-1 text-balance font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h1 className="mt-1 text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
             {t("sectionTitle")}
           </h1>
           <p className="mt-5 max-w-sm text-muted-foreground">

@@ -1,7 +1,7 @@
 import { ArrowDownRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { PillButton } from "@/components/marketing/pill-button";
 import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 
 export function AboutTeaser() {
@@ -23,19 +23,22 @@ export function AboutTeaser() {
           <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
 
           <div className="relative flex h-full flex-col justify-end p-8 sm:p-12 lg:p-14">
-            <span className="block font-display text-lg font-light text-white/60 italic sm:text-xl">
+            <span className="block font-display text-lg font-medium text-white/70 sm:text-xl">
               {t("teaserKicker")}
             </span>
-            <h2 className="max-w-lg text-balance font-display text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl">
+            <h2 className="max-w-lg text-balance font-display text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl md:text-3xl">
               {t("teaserTitle")}
             </h2>
-            <Link
+            <PillButton
               href="/hakkimizda"
-              className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              variant="light"
+              className="mt-6"
+              icon={
+                <ArrowDownRight className="h-4 w-4 text-gold transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+              }
             >
               {t("sideLabel")}
-              <ArrowDownRight className="h-4 w-4 text-gold transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-            </Link>
+            </PillButton>
           </div>
         </ScrollReveal>
       </div>

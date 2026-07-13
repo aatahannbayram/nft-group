@@ -12,6 +12,9 @@ const TEAM_PHOTOS = [
   "/images/workforce/engineer-confident.jpg",
   "/images/workforce/pipe-welder-workshop.jpg",
   "/images/workforce/steel-beam-welder.jpg",
+  "/images/gallery/tersane-gemi-insa/03.jpg",
+  "/images/gallery/altyapi-ve-celik-insa/05.jpg",
+  "/images/gallery/tersane-tamir/02.jpg",
 ];
 
 function Pill({ children }: { children: React.ReactNode }) {
@@ -62,7 +65,7 @@ export default async function AboutPage() {
             <p className="font-stencil text-xs font-semibold tracking-[0.25em] text-gold uppercase">
               {t("pageEyebrow")}
             </p>
-            <h1 className="mt-4 max-w-2xl text-balance font-stencil text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="mt-4 max-w-2xl text-balance font-stencil text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl md:text-4xl">
               {t("pageTitle")}
             </h1>
             <p className="mt-5 max-w-lg text-balance text-white/70">
@@ -76,40 +79,57 @@ export default async function AboutPage() {
           <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
             <ScrollReveal>
               <Pill>{t("principlesEyebrow")}</Pill>
-              <h2 className="mt-6 max-w-3xl text-balance font-stencil text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl">
+              <h2 className="mt-6 max-w-3xl text-balance font-stencil text-xl leading-snug font-semibold tracking-tight text-foreground sm:text-2xl">
                 <span className="text-foreground/40">{t("principlesLeadIn")} </span>
                 {t("principlesHeadline")}
               </h2>
             </ScrollReveal>
 
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {principles.map(({ icon: Icon, title, description }, index) => (
-                <ScrollReveal
-                  key={title}
-                  delay={0.08 * index}
-                  className="rounded-3xl bg-white p-7 shadow-sm"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-black text-white">
-                    <Icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <h3 className="mt-6 font-display text-lg font-bold tracking-tight text-foreground">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {description}
-                  </p>
-                </ScrollReveal>
-              ))}
+            <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
+              <div className="flex flex-col gap-4 lg:col-span-7">
+                {principles.map(({ icon: Icon, title, description }, index) => (
+                  <ScrollReveal
+                    key={title}
+                    delay={0.08 * index}
+                    className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-sm"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-black text-white">
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
+                    </span>
+                    <span>
+                      <h3 className="font-display text-lg font-bold tracking-tight text-foreground">
+                        {title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {description}
+                      </p>
+                    </span>
+                  </ScrollReveal>
+                ))}
+              </div>
+
+              <ScrollReveal
+                delay={0.2}
+                className="photo-tone shadow-glow-navy relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-black/5 lg:col-span-5"
+              >
+                <Image
+                  src="/images/real/hull-hall.jpg"
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </ScrollReveal>
             </div>
           </div>
         </section>
 
         {/* Field team */}
-        <section className="relative bg-white">
+        <section className="relative bg-background">
           <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
             <ScrollReveal>
               <Pill>{t("workforceEyebrowPill")}</Pill>
-              <h2 className="mt-6 max-w-xl text-balance font-stencil text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl">
+              <h2 className="mt-6 max-w-xl text-balance font-stencil text-xl leading-snug font-semibold tracking-tight text-foreground sm:text-2xl">
                 {t("workforceMessage")}
               </h2>
             </ScrollReveal>

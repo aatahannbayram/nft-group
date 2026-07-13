@@ -29,7 +29,7 @@ export default async function NewsPage() {
           <p className="font-stencil text-xs font-semibold tracking-[0.25em] text-gold uppercase">
             {t("pageEyebrow")}
           </p>
-          <h1 className="mt-3 max-w-2xl text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="mt-3 max-w-2xl text-balance font-display text-2xl font-bold tracking-tight md:text-3xl">
             {t("pageTitle")}
           </h1>
           <p className="mt-3 max-w-xl text-muted-foreground">{t("pageIntro")}</p>

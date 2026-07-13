@@ -23,6 +23,8 @@
     "ctaPrimary": "Projenizi Anlatın",
     "ctaSecondary": "Hizmetlerimizi İnceleyin",
     "heroCallUs": "Bizi Arayın",
+    "heroTrustValue": "200+",
+    "heroTrustLabel": "Tersane Projesi Deneyimi",
     "servicesLeadIn": "Denizden karaya,",
     "servicesHeadline": "tersane inşasından çelik konstrüksiyona, altyapıdan inşaat sektörüne kadar uçtan uca mühendislik.",
     "cornerDisciplines": "4 Uzmanlık Alanı",
@@ -33,6 +35,7 @@
     "statFieldWork": "Saha Fotoğrafı",
     "statProjectTypes": "Askeri & Sivil Proje Tipi",
     "statLocation": "Altınova / Yalova Sahası",
+    "statLocationCaption": "Şantiye Adresi",
     "fieldTitle": "Güvenle inşa ediyor, zamanında teslim ediyoruz"
   },
   "services": {

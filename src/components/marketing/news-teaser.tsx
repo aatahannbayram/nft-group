@@ -20,19 +20,19 @@ export async function NewsTeaser() {
   if (featured.length === 0) return null;
 
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section className="relative w-full overflow-hidden bg-background">
       <div
         aria-hidden
-        className="bg-glow-gold pointer-events-none absolute -bottom-16 right-[6%] -z-0 h-72 w-72 opacity-15"
+        className="bg-glow-navy pointer-events-none absolute -bottom-16 right-[6%] -z-0 h-72 w-72 opacity-15"
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-8 pb-20 md:px-16 md:pt-10 md:pb-24 lg:px-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <ScrollReveal>
-            <span className="block font-display text-lg font-light text-navy/50 italic sm:text-xl">
+            <span className="block font-display text-lg font-medium text-steel sm:text-xl">
               {t("kicker")}
             </span>
-            <h2 className="mt-1 text-balance font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-1 text-balance font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
               {t("sectionTitle")}
             </h2>
           </ScrollReveal>
@@ -64,7 +64,7 @@ export async function NewsTeaser() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-6">
-                  <span className="font-stencil text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
+                  <span className="font-stencil text-[11px] font-semibold tracking-[0.15em] text-steel uppercase">
                     {tServices(`${categoryToMessageKey(article.category)}.title`)} ·{" "}
                     {dateFormatter.format(new Date(article.publishedAt))}
                   </span>

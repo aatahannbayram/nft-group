@@ -21,14 +21,14 @@ export function ServicesSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="relative w-full bg-white">
+    <section className="relative w-full bg-background">
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-16 md:py-24 lg:px-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <ScrollReveal>
-            <span className="block font-display text-lg font-light text-navy/50 italic sm:text-xl">
+            <span className="block font-display text-lg font-medium text-steel sm:text-xl">
               {t("sectionKicker")}
             </span>
-            <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="text-balance font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
               {t("sectionTitle")}
             </h2>
           </ScrollReveal>
@@ -63,7 +63,7 @@ export function ServicesSection() {
                     sizes="(min-width: 640px) 50vw, 100vw"
                     className={cn(
                       "object-cover transition-transform duration-700 ease-out",
-                      isActive ? "scale-110" : "scale-100 group-hover:scale-105"
+                      isActive ? "scale-105" : "scale-100 group-hover:scale-105"
                     )}
                   />
                   <div

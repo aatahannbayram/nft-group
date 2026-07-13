@@ -18,8 +18,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-mono: var(--font-body);
-  --font-display: var(--font-body);
-  --font-stencil: var(--font-accent);
+  --font-heading: var(--font-heading);
+  --font-display: var(--font-heading);
+  --font-stencil: var(--font-heading);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-steel: var(--steel);
@@ -66,38 +67,47 @@
 }
 
 /*
-  NFT Group brand direction: navy + red maritime corporate, now with a
-  soft glassmorphism / gradient-depth layer on top of the flat white
-  canvas. Deep navy (#002d56) for nav/footer/hero text, a red (#ed1c24)
-  accent for CTAs/links/highlights, near-black body text. Not tied to
+  NFT Group brand direction: navy + steel + red maritime corporate, with a
+  soft glassmorphism / gradient-depth layer on top of a warm off-white
+  canvas. Deep navy (#0B2340) for nav/footer/hero text and dark surfaces,
+  a cool steel-blue (#45566B) for secondary text, eyebrows/labels and
+  decorative accents, and red (#ed1c24) reserved strictly for CTAs and
+  interactive/active states — never for labels or decoration. Not tied to
   system light/dark preference.
+
+  Type scale convention (see components for exact Tailwind classes):
+    H1 (hero only)   text-4xl sm:text-5xl md:text-6xl
+    H2 (section)      text-3xl sm:text-4xl md:text-5xl
+    H3 (card title)    text-xl sm:text-2xl
+    Body               text-base sm:text-lg
+    Caption/eyebrow    text-xs tracking-[0.2em] uppercase
 */
 :root {
-  --background: #ffffff;
+  --background: #f6f5f2;
   --foreground: #0c1017;
   --card: #ffffff;
   --card-foreground: #0c1017;
   --popover: #ffffff;
   --popover-foreground: #0c1017;
-  --primary: #002d56;
+  --primary: #0b2340;
   --primary-foreground: #ffffff;
-  --secondary: #f5f5f5;
+  --secondary: #f6f5f2;
   --secondary-foreground: #0c1017;
-  --muted: #f5f5f5;
-  --muted-foreground: #6b7280;
+  --muted: #f6f5f2;
+  --muted-foreground: #45566b;
   --accent: #ed1c24;
   --accent-foreground: #ffffff;
   --destructive: #ed1c24;
   --border: rgb(12 16 23 / 10%);
   --input: rgb(12 16 23 / 12%);
   --ring: rgb(237 28 36 / 40%);
-  --chart-1: #002d56;
+  --chart-1: #0b2340;
   --chart-2: #ed1c24;
-  --chart-3: #4a6fa5;
+  --chart-3: #45566b;
   --chart-4: #8a93a3;
   --chart-5: #0c1017;
   --radius: 0.25rem;
-  --sidebar: #002d56;
+  --sidebar: #0b2340;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #ed1c24;
   --sidebar-primary-foreground: #ffffff;
@@ -108,10 +118,11 @@
 
   --gold: #ed1c24;
   --gold-soft: rgb(237 28 36 / 10%);
-  --steel: #002d56;
+  --steel: #45566b;
   --surface: #ffffff;
-  --surface-2: #f5f5f5;
-  --navy: #002d56;
+  --surface-2: #f6f5f2;
+  --surface-dark: #071a30;
+  --navy: #0b2340;
   --navy-foreground: #ffffff;
 }
 
@@ -148,9 +159,14 @@
     text-wrap: balance;
   }
 
-  /* Light glass surface — frosted white card on light/photo backgrounds */
-  .glass {
-    background: rgb(255 255 255 / 65%);
+  /* Diagonal-gradient glass — livelier variant of .glass for standalone
+     accent cards (e.g. the hero-adjacent stats bar) that shouldn't read flat. */
+  .glass-accent {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--steel) 14%, rgb(255 255 255 / 72%)) 0%,
+      color-mix(in oklch, var(--navy) 7%, rgb(255 255 255 / 60%)) 100%
+    );
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgb(255 255 255 / 60%);
@@ -159,9 +175,20 @@
       0 12px 32px -12px rgb(12 16 23 / 12%);
   }
 
-  /* Dark glass surface — frosted navy card on dark/navy backgrounds */
+  /* Light glass surface — steel-tinted frosted card on light/photo backgrounds */
+  .glass {
+    background: color-mix(in oklch, var(--steel) 10%, rgb(255 255 255 / 65%));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 60%);
+    box-shadow:
+      0 1px 2px rgb(12 16 23 / 6%),
+      0 12px 32px -12px rgb(12 16 23 / 12%);
+  }
+
+  /* Dark glass surface — frosted steel-blue card on dark/navy backgrounds */
   .glass-dark {
-    background: rgb(0 45 86 / 55%);
+    background: color-mix(in oklch, var(--steel) 45%, rgb(7 26 48 / 55%));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgb(255 255 255 / 12%);
@@ -189,9 +216,20 @@
     filter: blur(60px);
   }
 
-  /* Diagonal brand gradient — navy to a deeper ink navy */
+  /* Steel glow — for ambient/decorative blobs on dark navy surfaces, where a
+     navy-on-navy glow would have too little contrast to read. */
+  .bg-glow-steel {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklch, var(--steel) 55%, transparent),
+      transparent
+    );
+    filter: blur(60px);
+  }
+
+  /* Diagonal brand gradient — navy to the darkest surface tone */
   .bg-gradient-navy {
-    background: linear-gradient(135deg, var(--navy) 0%, #001a35 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--surface-dark) 100%);
   }
 
   /* Diagonal accent gradient — red to a warmer ember tone, used on active states */
@@ -208,20 +246,25 @@
     box-shadow: 0 8px 30px -6px color-mix(in oklch, var(--navy) 45%, transparent);
   }
 
-  /* Consistent maritime-navy duotone over photography for a cohesive, less "stock photo" look */
+  /* Single, sitewide cool-navy cinematic grade for all photography — applied
+     as (1) a CSS filter pass and (2) a full-frame navy wash layered under a
+     diagonal vignette, so every photo (hero, cards, gallery) reads as one
+     consistent visual language instead of mixed rusty-warm/bright-blue tones. */
   .photo-tone {
-    filter: saturate(1.08) contrast(1.04);
+    filter: saturate(0.92) contrast(1.05) hue-rotate(-3deg);
   }
 
   .photo-tone::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      165deg,
-      color-mix(in oklch, var(--navy) 22%, transparent) 0%,
-      transparent 55%
-    );
+    background:
+      linear-gradient(
+        165deg,
+        color-mix(in oklch, var(--navy) 18%, transparent) 0%,
+        transparent 55%
+      ),
+      color-mix(in oklch, var(--navy) 6%, transparent);
     mix-blend-mode: multiply;
     pointer-events: none;
   }
@@ -229,5 +272,19 @@
   /* Continuous right-to-left image marquee — pairs with a duplicated image list */
   .animate-marquee {
     animation: marquee-scroll 44s linear infinite;
+  }
+}
+
+/* Respect the OS-level "reduce motion" preference for every CSS-driven
+   transition/animation (Tailwind hover transitions, the marquee keyframe).
+   Framer-motion animations are handled separately via MotionConfig. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

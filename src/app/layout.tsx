@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Albert_Sans, Unbounded } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
+import { MotionConfigProvider } from "@/components/motion-config-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const albertSans = Albert_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+// Headings (h1–h4, featured numbers) — industrial/technical geometric sans.
+// Space Grotesk has no italic style on Google Fonts; emphasis is done via
+// accent color + weight instead (see components using the former "kicker
+// italic" pattern).
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-heading",
+  subsets: ["latin", "latin-ext"],
 });
 
-const unbounded = Unbounded({
-  variable: "--font-accent",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Body copy, nav, buttons — neutral, highly legible at small sizes.
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
@@ -29,10 +33,10 @@ export default function RootLayout({
     <html
       lang="tr"
       data-scroll-behavior="smooth"
-      className={`${albertSans.variable} ${unbounded.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <MotionConfigProvider>{children}</MotionConfigProvider>
         <Toaster theme="dark" />
       </body>
     </html>

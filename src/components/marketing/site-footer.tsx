@@ -2,6 +2,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LogoMark } from "@/components/marketing/logo-mark";
+import { SectionDivider } from "@/components/marketing/section-divider";
 import { getSiteSettings } from "@/lib/settings";
 
 export async function SiteFooter() {
@@ -18,10 +19,11 @@ export async function SiteFooter() {
 
   return (
     <footer className="relative overflow-hidden bg-gradient-navy text-white">
+      <SectionDivider from="var(--background)" to="var(--navy)" className="absolute inset-x-0 top-0" />
       <div className="absolute inset-0 bg-blueprint opacity-[0.06] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div
         aria-hidden
-        className="bg-glow-gold pointer-events-none absolute -top-32 right-0 h-96 w-96 opacity-20"
+        className="bg-glow-steel pointer-events-none absolute -top-32 right-0 h-96 w-96 opacity-30"
       />
 
       <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-10 sm:px-10">
@@ -30,7 +32,7 @@ export async function SiteFooter() {
         </p>
         <Link
           href="/iletisim"
-          className="group mt-4 flex flex-wrap items-center gap-3 text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
+          className="group mt-4 flex flex-wrap items-center gap-3 text-balance font-display text-2xl font-bold tracking-tight text-white transition-colors duration-200 hover:text-white/85 sm:text-3xl md:text-4xl"
         >
           {home("ctaPrimary")}
           <span className="shadow-glow-gold flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 sm:h-12 sm:w-12">
@@ -105,11 +107,11 @@ export async function SiteFooter() {
             <Link href="/projeler" className="transition hover:text-white">
               {nav("projects")}
             </Link>
-            <Link href="/haberler" className="transition hover:text-white">
-              {nav("news")}
-            </Link>
             <Link href="/hakkimizda" className="transition hover:text-white">
               {nav("about")}
+            </Link>
+            <Link href="/haberler" className="transition hover:text-white">
+              {nav("news")}
             </Link>
             <Link href="/iletisim" className="transition hover:text-white">
               {nav("contact")}

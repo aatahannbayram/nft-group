@@ -44,7 +44,7 @@ export function FeaturedProject() {
           <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold uppercase">
             {t("eyebrow")}
           </span>
-          <h2 className="mt-4 text-balance font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+          <h2 className="mt-4 text-balance font-display text-xl font-semibold leading-snug tracking-tight md:text-2xl">
             {t("title")}
           </h2>
           <p className="mt-5 max-w-md text-muted-foreground">

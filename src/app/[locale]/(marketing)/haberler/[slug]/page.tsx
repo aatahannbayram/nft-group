@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { galleryItems } from "@/lib/gallery-data";
 import { getAllNewsSlugs, getNewsArticle, getRelatedNewsArticles } from "@/lib/news-data";
 import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 
@@ -51,6 +52,9 @@ export default async function NewsDetailPage({
   });
 
   const related = await getRelatedNewsArticles(article.category, slug, 3);
+  const bodyImage = galleryItems.find(
+    (item) => item.category === article.category && item.image !== article.image
+  );
 
   return (
     <>
@@ -78,7 +82,7 @@ export default async function NewsDetailPage({
             {tServices(`${categoryToMessageKey(article.category)}.title`)} ·{" "}
             {dateFormatter.format(new Date(article.publishedAt))}
           </p>
-          <h1 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="mt-3 text-balance font-display text-2xl font-bold tracking-tight md:text-3xl">
             {content.title}
           </h1>
         </ScrollReveal>
@@ -87,9 +91,22 @@ export default async function NewsDetailPage({
       <section className="mx-auto max-w-3xl px-6 py-16">
         <ScrollReveal className="flex flex-col gap-5">
           {content.body.map((paragraph, index) => (
-            <p key={index} className="text-[15px] leading-relaxed text-foreground/90">
-              {paragraph}
-            </p>
+            <div key={index} className="flex flex-col gap-5">
+              <p className="text-[15px] leading-relaxed text-foreground/90">
+                {paragraph}
+              </p>
+              {index === 1 && bodyImage && (
+                <div className="photo-tone relative aspect-[16/9] overflow-hidden rounded-2xl shadow-sm ring-1 ring-black/5">
+                  <Image
+                    src={bodyImage.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 768px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </div>
           ))}
         </ScrollReveal>
 
@@ -116,9 +133,18 @@ export default async function NewsDetailPage({
                 <ScrollReveal key={other.slug} delay={index * 0.08}>
                   <Link
                     href={`/haberler/${other.slug}`}
-                    className="glass group block h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                    className="glass group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                   >
-                    <span className="font-display text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-gold">
+                    <div className="photo-tone relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={other.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <span className="p-5 font-display text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-gold">
                       {other[locale].title}
                     </span>
                   </Link>

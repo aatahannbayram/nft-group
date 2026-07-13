@@ -25,15 +25,15 @@ export function FaqSection() {
     <section className="relative overflow-hidden bg-surface-2">
       <div
         aria-hidden
-        className="bg-glow-gold pointer-events-none absolute -bottom-24 left-[4%] -z-0 h-80 w-80 opacity-15"
+        className="bg-glow-navy pointer-events-none absolute -bottom-24 left-[4%] -z-0 h-80 w-80 opacity-15"
       />
 
       <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-16 md:py-24 lg:px-20">
         <ScrollReveal className="max-w-xl">
-          <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold uppercase">
+          <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-steel uppercase">
             {t("eyebrow")}
           </span>
-          <h2 className="mt-3 text-balance font-display text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-balance font-display text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
             {t("title")}
           </h2>
           <p className="mt-5 max-w-sm text-muted-foreground">{t("intro")}</p>
@@ -63,7 +63,7 @@ export function FaqSection() {
                 <AccordionItem key={key} value={key}>
                   <AccordionTrigger>
                     <span className="flex items-start gap-4">
-                      <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-gold">
+                      <span className="font-stencil text-xs font-semibold tracking-[0.2em] text-steel">
                         0{index + 1}
                       </span>
                       <span>{t(`items.${key}.question`)}</span>

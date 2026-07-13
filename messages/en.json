@@ -23,6 +23,8 @@
     "ctaPrimary": "Tell Us About Your Project",
     "ctaSecondary": "Explore Our Services",
     "heroCallUs": "Call Us",
+    "heroTrustValue": "200+",
+    "heroTrustLabel": "Shipyard Projects Delivered",
     "servicesLeadIn": "From sea to shore,",
     "servicesHeadline": "shipyard new-build to steel construction, infrastructure to civil works — full-spectrum engineering.",
     "cornerDisciplines": "4 Core Disciplines",
@@ -33,6 +35,7 @@
     "statFieldWork": "Field Photos",
     "statProjectTypes": "Military & Civil Project Types",
     "statLocation": "Altınova / Yalova Yard",
+    "statLocationCaption": "Shipyard Address",
     "fieldTitle": "Built with trust. Delivered on time."
   },
   "services": {
